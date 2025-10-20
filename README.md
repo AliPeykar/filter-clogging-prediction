@@ -19,20 +19,58 @@ A **production-ready machine learning system** for predicting filter clogging ev
 ## Project Structure
 
 ```
-final3/
-├── __init__.py                 # Package initialization
-├── config.py                   # Configuration management
+filter-clogging-prediction/
 ├── main.py                     # Main execution script
-├── predictor.py                # FilterCloggingPredictor class
-├── data_processing.py          # Data loading and preprocessing
-├── feature_engineering.py      # Feature creation functions
-├── utils.py                    # Utility functions
-├── anomaly_detection.py        # Anomaly detection module
-├── survival_models.py          # Cox and RSF models
-├── regression_models.py        # Regression predictors
-├── evaluation.py               # Evaluation metrics and plots
-├── optimization.py             # Hyperparameter optimization
-└── README.md                   # This file
+├── requirements.txt            # Python dependencies
+├── README.md                   # This file
+│
+├── src/                        # Core source code
+│   ├── __init__.py            # Package initialization
+│   ├── config.py              # Configuration management
+│   ├── predictor.py           # FilterCloggingPredictor class
+│   ├── data_processing.py     # Data loading and preprocessing
+│   ├── feature_engineering.py # Feature creation functions
+│   ├── utils.py               # Utility functions
+│   ├── anomaly_detection.py   # Anomaly detection module
+│   ├── survival_models.py     # Cox and RSF models
+│   ├── regression_models.py   # Regression predictors
+│   ├── evaluation.py          # Evaluation metrics and plots
+│   ├── optimization.py        # Hyperparameter optimization
+│   ├── diagnose_model.py      # Model diagnostics
+│   └── filter_clogging_predictor.py  # Legacy monolithic implementation
+│
+├── scripts/                    # Utility scripts
+│   ├── run_anomaly_only.py   # Run anomaly detection only
+│   ├── run_extreme_imbalance.py  # Handle extreme imbalance
+│   ├── xgbooster1.py          # XGBoost experiments
+│   ├── main_backup.py         # Backup of main script
+│   ├── install_interpretability.sh   # Linux/Mac setup
+│   └── install_interpretability.bat  # Windows setup
+│
+├── docs/                       # Documentation
+│   ├── QUICK_START_GUIDE.md
+│   ├── COMPLETE_USAGE_GUIDE.md
+│   ├── INTERPRETABILITY_GUIDE.md
+│   ├── RISK_LEVEL_GUIDE.md
+│   ├── PHASE1_IMPLEMENTATION_SUMMARY.md
+│   ├── PHASE2_IMPLEMENTATION_SUMMARY.md
+│   └── ... (other documentation files)
+│
+├── data/                       # Data files (gitignored)
+│   └── Comprehensive_Filter_Analysis.xlsx
+│
+├── models/                     # Saved models (gitignored)
+│   ├── rf_model.pkl
+│   ├── xgb_model.pkl
+│   └── scaler.pkl
+│
+├── plots/                      # Generated visualizations (gitignored)
+│   ├── confusion_matrix.png
+│   ├── roc_curve.png
+│   └── interpretability/
+│
+└── results/                    # Analysis results (gitignored)
+    └── model_performance_summary.csv
 ```
 
 ## Quick Start
@@ -61,7 +99,11 @@ predictor, metrics = main(
 ### Command Line Usage
 
 ```bash
-python main.py filter_data.csv 8940
+# Run with your data file
+python main.py data/Comprehensive_Filter_Analysis.xlsx
+
+# Or specify clog index manually
+python main.py data/Comprehensive_Filter_Analysis.xlsx 8940
 ```
 
 ## Module Documentation
@@ -240,30 +282,29 @@ predictor = FilterCloggingPredictor(config=CONFIG, use_survival=False)
 
 ---
 
-## 📁 Project Structure
+## 📁 File Organization
 
-```
-final3/
-├── filter_clogging_predictor.py     # Main implementation
-├── README.md                         # This file
-├── QUICK_START_GUIDE.md             # Simple examples
-├── COMPLETE_USAGE_GUIDE.md          # Comprehensive guide
-├── PHASE1_IMPLEMENTATION_SUMMARY.md # Phase 1 details
-├── PHASE2_IMPLEMENTATION_SUMMARY.md # Phase 2 details
-├── models/                          # Saved models
-│   ├── rf_model.pkl
-│   ├── xgb_model.pkl
-│   ├── scaler.pkl
-│   └── model_metadata.pkl
-├── plots/                           # Visualizations
-│   ├── time_series_static.png
-│   ├── risk_timeline.png
-│   ├── shap_summary.png
-│   └── ...
-└── results/                         # Reports
-    ├── model_performance_summary.csv
-    └── model_comparison_report.csv
-```
+### Core Files (Root Directory)
+- **main.py** - Main execution script for running the complete pipeline
+- **requirements.txt** - All Python package dependencies
+- **README.md** - This comprehensive guide
+
+### Source Code (`src/`)
+All core Python modules implementing the prediction system
+
+### Documentation (`docs/`)
+- Quick start guides and tutorials
+- Implementation summaries and technical details
+- Feature guides and troubleshooting
+
+### Scripts (`scripts/`)
+Utility scripts for specific tasks and experiments
+
+### Generated Outputs
+- **models/** - Trained model files (gitignored)
+- **plots/** - Visualization outputs (gitignored)
+- **results/** - Performance reports (gitignored)
+- **data/** - Input data files (gitignored)
 
 ---
 
@@ -328,15 +369,19 @@ The system has been validated on:
 ## 📞 Support & Documentation
 
 ### Quick Help:
-- **Getting Started**: [QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)
-- **Complete Guide**: [COMPLETE_USAGE_GUIDE.md](COMPLETE_USAGE_GUIDE.md)
+- **Getting Started**: [docs/QUICK_START_GUIDE.md](docs/QUICK_START_GUIDE.md)
+- **Complete Guide**: [docs/COMPLETE_USAGE_GUIDE.md](docs/COMPLETE_USAGE_GUIDE.md)
+- **Interpretability**: [docs/INTERPRETABILITY_GUIDE.md](docs/INTERPRETABILITY_GUIDE.md)
+- **Risk Levels**: [docs/RISK_LEVEL_GUIDE.md](docs/RISK_LEVEL_GUIDE.md)
 
 ### Technical Deep-Dive:
-- **Phase 1**: [PHASE1_IMPLEMENTATION_SUMMARY.md](PHASE1_IMPLEMENTATION_SUMMARY.md)
-- **Phase 2**: [PHASE2_IMPLEMENTATION_SUMMARY.md](PHASE2_IMPLEMENTATION_SUMMARY.md)
+- **Phase 1**: [docs/PHASE1_IMPLEMENTATION_SUMMARY.md](docs/PHASE1_IMPLEMENTATION_SUMMARY.md)
+- **Phase 2**: [docs/PHASE2_IMPLEMENTATION_SUMMARY.md](docs/PHASE2_IMPLEMENTATION_SUMMARY.md)
 
 ### Code:
-- **Main File**: [filter_clogging_predictor.py](filter_clogging_predictor.py) (~2500 lines)
+- **Main Script**: [main.py](main.py) - Entry point for the system
+- **Source Code**: [src/](src/) - All core modules
+- **Legacy Implementation**: [src/filter_clogging_predictor.py](src/filter_clogging_predictor.py) (~2500 lines monolithic version)
 
 ---
 

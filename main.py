@@ -8,17 +8,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import modular components
-from config import CONFIG
-from data_processing import (
+from src.config import CONFIG
+from src.data_processing import (
     load_and_prepare_data,
     compute_target_labels,
     create_ratio_features,
     prepare_features_and_targets
 )
-from feature_engineering import engineer_all_features
-from utils import time_series_split_imbalanced
-from predictor import FilterCloggingPredictor
-from evaluation import (
+from src.feature_engineering import engineer_all_features
+from src.utils import time_series_split_imbalanced
+from src.predictor import FilterCloggingPredictor
+from src.evaluation import (
     evaluate_classification_model,
     evaluate_regression_model,
     plot_confusion_matrix,
