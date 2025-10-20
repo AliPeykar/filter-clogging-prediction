@@ -36,14 +36,9 @@ filter-clogging-prediction/
 │   ├── regression_models.py   # Regression predictors
 │   ├── evaluation.py          # Evaluation metrics and plots
 │   ├── optimization.py        # Hyperparameter optimization
-│   ├── diagnose_model.py      # Model diagnostics
-│   └── filter_clogging_predictor.py  # Legacy monolithic implementation
+│   └── diagnose_model.py      # Model diagnostics
 │
 ├── scripts/                    # Utility scripts
-│   ├── run_anomaly_only.py   # Run anomaly detection only
-│   ├── run_extreme_imbalance.py  # Handle extreme imbalance
-│   ├── xgbooster1.py          # XGBoost experiments
-│   ├── main_backup.py         # Backup of main script
 │   ├── install_interpretability.sh   # Linux/Mac setup
 │   └── install_interpretability.bat  # Windows setup
 │
@@ -52,9 +47,12 @@ filter-clogging-prediction/
 │   ├── COMPLETE_USAGE_GUIDE.md
 │   ├── INTERPRETABILITY_GUIDE.md
 │   ├── RISK_LEVEL_GUIDE.md
+│   ├── ANOMALY_DETECTION_IMPLEMENTATION.md
 │   ├── PHASE1_IMPLEMENTATION_SUMMARY.md
 │   ├── PHASE2_IMPLEMENTATION_SUMMARY.md
-│   └── ... (other documentation files)
+│   ├── RISK_LEVEL_IMPLEMENTATION_SUMMARY.md
+│   ├── VISUALIZATION_ENHANCEMENT_SUMMARY.md
+│   └── QUICK_START_ANOMALY_DETECTION.md
 │
 ├── data/                       # Data files (gitignored)
 │   └── Comprehensive_Filter_Analysis.xlsx
@@ -69,8 +67,17 @@ filter-clogging-prediction/
 │   ├── roc_curve.png
 │   └── interpretability/
 │
-└── results/                    # Analysis results (gitignored)
-    └── model_performance_summary.csv
+├── results/                    # Analysis results (gitignored)
+│   └── model_performance_summary.csv
+│
+└── archive/                    # Archived experimental and deprecated files
+    ├── experimental/          # Experimental scripts and legacy code
+    │   ├── run_anomaly_only.py
+    │   ├── run_extreme_imbalance.py
+    │   ├── main_backup.py
+    │   └── legacy_monolithic_implementation.py
+    └── deprecated_docs/       # Historical documentation
+        └── ... (development notes and fixes)
 ```
 
 ## Quick Start
@@ -306,6 +313,9 @@ Utility scripts for specific tasks and experiments
 - **results/** - Performance reports (gitignored)
 - **data/** - Input data files (gitignored)
 
+### Archive
+- **archive/** - Experimental scripts, legacy implementations, and deprecated documentation preserved for reference
+
 ---
 
 ## 🎯 Best Practices
@@ -381,7 +391,7 @@ The system has been validated on:
 ### Code:
 - **Main Script**: [main.py](main.py) - Entry point for the system
 - **Source Code**: [src/](src/) - All core modules
-- **Legacy Implementation**: [src/filter_clogging_predictor.py](src/filter_clogging_predictor.py) (~2500 lines monolithic version)
+- **Archive**: [archive/](archive/) - Experimental scripts and legacy implementations (for reference only)
 
 ---
 
