@@ -1,4 +1,4 @@
-# Filter Clogging Prediction System (Modular v2.0)
+# Filter Clogging Prediction System (Modular v1.0)
 
 A comprehensive, modular system for predicting filter clogging using multiple machine learning approaches.
 
