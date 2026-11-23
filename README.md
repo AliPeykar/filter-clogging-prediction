@@ -2,9 +2,9 @@
 
 Data, code and analysis scripts for the article
 
-> A. Peykar, S. Movahedirad. *From perfect scores to credible performance:
-> leakage-aware validation of machine-learning clogging detection for
-> natural-gas filters.* Submitted to *Proc. IMechE Part O: Journal of Risk and
+> A. Peykar, S. Movahedirad. *From perfect scores to credible evaluation:
+> leakage-aware validation of machine-learning clogging detection for a
+> natural-gas filter.* Submitted to *Proc. IMechE Part O: Journal of Risk and
 > Reliability* (under review).
 
 The article audits an earlier pipeline of ours that reported accuracy, F1 and
