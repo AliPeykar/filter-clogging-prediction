@@ -1,0 +1,34 @@
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Enhanced Production Filter Analysis System initialized with SHAP and Risk Analysis
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Starting enhanced system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Features: Optimization=True, SHAP=True, Viz=True
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Loaded 11519 samples with 9 columns
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Available columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Found status column: filter_status
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Status value distribution:
+filter_status
+Not Clogged    8942
+Clogged        2577
+Name: count, dtype: int64
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Multiclass distribution: {0: np.int64(0), 1: np.int64(0), 2: np.int64(0), 3: np.int64(10367), 4: np.int64(575), 5: np.int64(577)}
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Successfully used existing labels
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Analyzing risk level distribution...
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced: Risk Level Distribution:
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced:   Level 3 (Alert - Medium-High Risk): 10,367 samples (90.0%)
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced:   Level 4 (Warning - High Risk): 575 samples (5.0%)
+2025-09-23 17:05:54 [INFO] filter_analysis_enhanced:   Level 5 (Critical - Very High Risk): 577 samples (5.0%)
+2025-09-23 17:05:55 [INFO] filter_analysis_enhanced: Risk distribution plots created successfully
+2025-09-23 17:05:55 [INFO] filter_analysis_enhanced: Binary target distribution: {0: np.int64(0), 1: np.int64(11519)}
+2025-09-23 17:05:55 [INFO] filter_analysis_enhanced: Multiclass target distribution: {0: np.int64(0), 1: np.int64(0), 2: np.int64(0), 3: np.int64(10367), 4: np.int64(575), 5: np.int64(577)}
+2025-09-23 17:05:55 [INFO] filter_analysis_enhanced: Creating data overview visualizations...
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Data overview saved to visualizations\data_overview.png
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Temporal split: train=9215, test=2304
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Fitting production feature engineer
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Feature engineering fitted with 72 features
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Generated 72 features
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Starting enhanced model training with SHAP explainability
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Binary classes: 1
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Multi classes: 1
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Enhanced system with SHAP and risk analysis saved to models\enhanced_system_20250923_170556
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Enhanced training report saved to reports\enhanced_training_report_20250923_170556.txt
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Enhanced system training completed successfully
+2025-09-23 17:05:56 [INFO] filter_analysis_enhanced: Operation completed in 0.05 minutes

@@ -1,0 +1,10 @@
+# PRIMARY experiment: leakage-free features, held-out-transition split (S2).
+name: main
+feature_set: leakage_free
+split:
+  scheme: held_out_transition
+horizons: [0]
+run_risk_levels: true
+run_shap: true
+run_figures: true
+output_root: paper/01_reproduction/runs

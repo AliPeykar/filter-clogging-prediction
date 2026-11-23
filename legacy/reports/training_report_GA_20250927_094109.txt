@@ -1,0 +1,103 @@
+================================================================================
+FILTER ANALYSIS SYSTEM - TRAINING REPORT
+================================================================================
+Generated: 2025-09-27 09:41:09
+System Version: 2.0.0
+Optimization: Genetic Algorithm
+
+MODEL PERFORMANCE
+----------------------------------------
+Accuracy:  1.0000
+Precision: 1.0000
+Recall:    1.0000
+F1 Score:  1.0000
+ROC AUC:   1.0000
+
+OPTIMIZED HYPERPARAMETERS
+----------------------------------------
+bootstrap                : True
+criterion                : gini
+max_depth                : 19
+max_features             : log2
+max_samples              : 0.5
+min_impurity_decrease    : 0.004161755619888279
+min_samples_leaf         : 2
+min_samples_split        : 2
+n_estimators             : 97
+
+
+======================================================================
+GENETIC ALGORITHM OPTIMIZATION REPORT
+======================================================================
+
+Configuration:
+  Population Size: 20
+  Generations: 15
+  Mutation Rate: 20.00%
+  Elite Size: 4
+  Tournament Size: 3
+
+Results:
+  Final Best Score: 0.9999
+  Total Evaluations: 120
+  Total Time: 113.0 seconds
+
+Best Hyperparameters:
+  bootstrap           : True
+  criterion           : gini
+  max_depth           : 19
+  max_features        : log2
+  max_samples         : 0.5
+  min_impurity_decrease: 0.004161755619888279
+  min_samples_leaf    : 2
+  min_samples_split   : 2
+  n_estimators        : 97
+
+Evolution Progress:
+ Gen |    Best | Average | Std Dev | Time(s)
+---------------------------------------------
+   1 |  0.9999 |  0.9998 |  0.0001 |    15.3
+   2 |  0.9999 |  0.9998 |  0.0001 |     8.8
+   3 |  0.9999 |  0.9998 |  0.0003 |    11.3
+   4 |  0.9999 |  0.9999 |  0.0001 |    25.1
+   5 |  0.9999 |  0.9999 |  0.0001 |    29.3
+   6 |  0.9999 |  0.9999 |  0.0001 |    23.2
+
+Convergence Analysis:
+  Average Improvement per Generation: 0.0000
+  Generations with Improvement: 0
+  Final Plateau Length: 0
+======================================================================
+TOP 20 FEATURE IMPORTANCES
+----------------------------------------
+  1. flowrate_squared                   : 0.113933
+  2. flowrate_rank                      : 0.103556
+  3. flowrate_zscore                    : 0.093054
+  4. flowrate                           : 0.073187
+  5. resistance_roll_mean_50            : 0.061396
+  6. resistance_squared                 : 0.051483
+  7. resistance                         : 0.051404
+  8. flow_dp_ratio                      : 0.051380
+  9. dp_roll_mean_5                     : 0.051341
+ 10. resistance_log                     : 0.030872
+ 11. efficiency                         : 0.030843
+ 12. dp_roll_mean_10                    : 0.030763
+ 13. dp                                 : 0.030729
+ 14. dp_roll_mean_20                    : 0.020485
+ 15. short_ema_lag_1                    : 0.020471
+ 16. dp_squared                         : 0.020470
+ 17. short_ema_lag_5                    : 0.020367
+ 18. power                              : 0.010385
+ 19. short_ema                          : 0.010343
+ 20. flow_dp_product                    : 0.010334
+
+SYSTEM CONFIGURATION
+----------------------------------------
+Total Features: 62
+GA Population Size: 20
+GA Generations: 15
+GA Mutation Rate: 0.2
+
+================================================================================
+END OF REPORT
+================================================================================

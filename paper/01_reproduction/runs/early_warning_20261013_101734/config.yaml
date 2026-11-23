@@ -1,0 +1,11 @@
+# Early-warning experiment: predict clogged state H rows ahead.
+# Minutes per row derived from the verified sampling interval at runtime.
+name: early_warning
+feature_set: leakage_free
+split:
+  scheme: held_out_transition
+horizons: [15, 30, 60]
+run_risk_levels: false
+run_shap: false
+run_figures: true
+output_root: paper/01_reproduction/runs

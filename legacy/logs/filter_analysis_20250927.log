@@ -1,0 +1,22 @@
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Production Filter Analysis System initialized
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Loading data from Comprehensive_Filter_Analysis.xlsx
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Successfully loaded data with 11519 rows and 9 columns
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Found status column: filter_status
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Status value distribution:
+filter_status
+Not Clogged    8942
+Clogged        2577
+Name: count, dtype: int64
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Multiclass distribution: {0: np.int64(0), 1: np.int64(0), 2: np.int64(0), 3: np.int64(10367), 4: np.int64(575), 5: np.int64(577)}
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Successfully used existing labels
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced: Risk Level Distribution:
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced:   Level 3 (Alert - Medium-High Risk): 10,367 samples (90.0%)
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced:   Level 4 (Warning - High Risk): 575 samples (5.0%)
+2025-09-27 16:26:44 [INFO] filter_analysis_enhanced:   Level 5 (Critical - Very High Risk): 577 samples (5.0%)
+2025-09-27 16:26:45 [INFO] filter_analysis_enhanced: Risk distribution plots created successfully
+2025-09-27 16:26:46 [INFO] filter_analysis_enhanced: Data overview saved to visualizations\data_overview.png
+2025-09-27 16:26:46 [INFO] filter_analysis_enhanced: Temporal split: train=9215, test=2304
+2025-09-27 16:26:46 [INFO] filter_analysis_enhanced: Fitting production feature engineer
+2025-09-27 16:26:46 [INFO] filter_analysis_enhanced: Feature engineering fitted with 72 features
+2025-09-27 16:26:47 [INFO] filter_analysis_enhanced: Operation completed in 0.05 minutes

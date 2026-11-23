@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Test-set performance (S2 held-out-transition split); 95\% moving-block bootstrap CIs where defined.}
+\label{tab:headline}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrlrrrlrlrlrlrr}
+\toprule
+horizon & model & balanced\_accuracy & balanced\_accuracy\_ci & precision & recall & f1 & f1\_ci & mcc & mcc\_ci & pr\_auc & pr\_auc\_ci & roc\_auc & roc\_auc\_ci & brier & ece \\
+\midrule
+h15 & XGB & 0.757 & [0.658, 0.848] & 0.565 & 1.000 & 0.722 & [0.517, 0.848] & 0.539 & [0.360, 0.697] & 0.983 & [0.934, 1.000] & 0.990 & [0.962, 1.000] & 0.310 & 0.316 \\
+h15 & RF & 0.938 & -- & 1.000 & 0.877 & 0.934 & -- & 0.902 & -- & 0.957 & -- & 0.970 & -- & 0.313 & 0.319 \\
+h30 & XGB & 0.767 & [0.665, 0.856] & 0.584 & 0.999 & 0.737 & [0.540, 0.856] & 0.558 & [0.382, 0.709] & 0.937 & [0.856, 0.976] & 0.972 & [0.943, 0.989] & 0.307 & 0.312 \\
+h30 & RF & 0.922 & -- & 1.000 & 0.844 & 0.916 & -- & 0.876 & -- & 0.949 & -- & 0.960 & -- & 0.281 & 0.293 \\
+h60 & XGB & 0.774 & [0.668, 0.859] & 0.609 & 0.997 & 0.756 & [0.561, 0.875] & 0.575 & [0.394, 0.731] & 0.971 & [0.901, 1.000] & 0.976 & [0.927, 1.000] & 0.278 & 0.284 \\
+h60 & RF & 0.905 & -- & 1.000 & 0.811 & 0.895 & -- & 0.846 & -- & 0.938 & -- & 0.946 & -- & 0.250 & 0.262 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

@@ -1,0 +1,743 @@
+{
+ "inputs": {
+  "dataset": "Comprehensive_Filter_Analysis.xlsx",
+  "n_samples": 11519
+ },
+ "tool_settings_search": [
+  {
+   "sensitivity": "conservative",
+   "baseline_fraction": 0.2,
+   "score_identical": 0.4622797117805365,
+   "cusum_max_abs_diff": 7660.982303548371
+  },
+  {
+   "sensitivity": "conservative",
+   "baseline_fraction": 0.25,
+   "score_identical": 0.9975692334404028,
+   "cusum_max_abs_diff": 1587.1571083552117
+  },
+  {
+   "sensitivity": "moderate",
+   "baseline_fraction": 0.2,
+   "score_identical": 0.4618456463234656,
+   "cusum_max_abs_diff": 9270.579435138672
+  },
+  {
+   "sensitivity": "moderate",
+   "baseline_fraction": 0.25,
+   "score_identical": 1.0,
+   "cusum_max_abs_diff": 0.000499959583976306
+  },
+  {
+   "sensitivity": "aggressive",
+   "baseline_fraction": 0.2,
+   "score_identical": 0.4616720201406372,
+   "cusum_max_abs_diff": 10333.506382832013
+  },
+  {
+   "sensitivity": "aggressive",
+   "baseline_fraction": 0.25,
+   "score_identical": 0.998610990537373,
+   "cusum_max_abs_diff": 1048.6351107429655
+  }
+ ],
+ "tool_reproduction": {
+  "settings": {
+   "cusum_sensitivity": "moderate",
+   "baseline_fraction": 0.25,
+   "time_threshold": 7500,
+   "ema_short": 50,
+   "ema_long": 200,
+   "score_threshold": 11
+  },
+  "short_ema_max_abs_diff": 0.0004999952876207914,
+  "long_ema_max_abs_diff": 0.0004999741275728553,
+  "cusum_max_abs_diff": 0.000499959583976306,
+  "cusum_threshold_max_abs_diff": 0.0004969536835979227,
+  "scores_identical": 11519,
+  "labels_identical_at_11": true,
+  "clogged_at_threshold": {
+   "10": 4019,
+   "11": 2577,
+   "12": 28
+  },
+  "baseline_mean_kPa": 4.1316,
+  "baseline_sd_kPa": 3.5288
+ },
+ "label_structure": {
+  "dp_thresholds_kPa": {
+   "mean+2sd": 11.189,
+   "mean+3sd": 14.718,
+   "mean+5sd": 21.776
+  },
+  "rule_onset_sample": 8943,
+  "scores_7501_to_onset_minus_1": [
+   10
+  ],
+  "criteria_at_samples": {
+   "7000": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 0,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   },
+   "7001": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 1,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   },
+   "7501": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   },
+   "8340": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   },
+   "8942": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   },
+   "8943": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 2,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 2
+   },
+   "8954": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 3,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 2
+   },
+   "9500": {
+    "cusum": 4,
+    "ema_divergence": 0,
+    "dp_elevation": 3,
+    "time_index": 2,
+    "rate_increase": 0,
+    "sustained_elevation": 2,
+    "look_ahead_30": 0
+   }
+  },
+  "equivalent_rule": "clogged <=> sample > 7,500 and dP > mean + 5 sd",
+  "equivalent_rule_disagreements": 11,
+  "disagreeing_samples": [
+   8943,
+   8944,
+   8945,
+   8946,
+   8947,
+   8948,
+   8949,
+   8950,
+   8951,
+   8952,
+   8953
+  ],
+  "onset_without_look_ahead": 8954,
+  "clogged_without_time_criterion": 17,
+  "clogged_labels_that_need_time_criterion": 2560,
+  "clogged_labels_that_need_look_ahead": 11,
+  "max_score_before_7001": 8
+ },
+ "logs": {
+  "data2.csv": {
+   "putty_start": "2025-04-22 14:47:16",
+   "rows": 4216,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "130.00 kPa"
+   }
+  },
+  "data2_2.csv": {
+   "putty_start": "2025-04-22 16:57:35",
+   "rows": 1968,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "130.00 kPa"
+   }
+  },
+  "data2_3.csv": {
+   "putty_start": "2025-04-22 17:49:06",
+   "rows": 3925,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "130.00 kPa"
+   }
+  },
+  "data2_4.csv": {
+   "putty_start": "2025-04-22 19:28:47",
+   "rows": 1201,
+   "header": {
+    "Created": "3 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "130.00 kPa"
+   }
+  },
+  "data2_5.csv": {
+   "putty_start": "2025-04-22 20:03:04",
+   "rows": 1028,
+   "header": {
+    "Created": "5 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "150.00 kPa"
+   }
+  },
+  "data2_6.csv": {
+   "putty_start": "2025-04-22 20:26:46",
+   "rows": 506,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "150.00 kPa"
+   }
+  },
+  "data2_7.csv": {
+   "putty_start": "2025-04-22 20:38:54",
+   "rows": 1165,
+   "header": {
+    "Created": "5 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "200.00 kPa"
+   }
+  },
+  "data2_8.csv": {
+   "putty_start": "2025-04-22 21:01:18",
+   "rows": 1571,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "150.00 kPa"
+   }
+  },
+  "data2_9.csv": {
+   "putty_start": "2025-04-23 12:14:56",
+   "rows": 1782,
+   "header": {
+    "Created": "4 seconds after system start",
+    "Pipe diameter": "53.20 mm",
+    "Orifice diameter": "6.90 mm",
+    "Beta ratio": "0.13",
+    "Discharge coefficient": "0.60",
+    "Temperature": "14.85 \u00b0C",
+    "Initial gauge pressure": "150.00 kPa"
+   }
+  }
+ },
+ "provenance": {
+  "samples_traced_to_a_log_row": 11509,
+  "samples_matching_no_log_row": [
+   8835,
+   8880,
+   8881,
+   8882,
+   9676,
+   9677,
+   9678,
+   9679,
+   9680,
+   9923
+  ],
+  "logging_interval_within_files_s": {
+   "median": 1.0,
+   "mean": 1.075,
+   "share_1s": 0.926,
+   "share_2s": 0.073
+  },
+  "wall_clock_first_last": [
+   "2025-04-22 14:50:02",
+   "2025-04-22 21:00:34"
+  ],
+  "wall_clock_span_h": 6.176,
+  "gaps_over_15s": 40,
+  "gaps_over_15s_total_s": 11737.0,
+  "backward_jumps": 2,
+  "files_in_order": [
+   {
+    "file": "data2.csv",
+    "first": 1,
+    "last": 3981,
+    "start": "2025-04-22 14:50:02",
+    "end": "2025-04-22 16:48:01"
+   },
+   {
+    "file": "data2_2.csv",
+    "first": 3982,
+    "last": 5646,
+    "start": "2025-04-22 17:03:29",
+    "end": "2025-04-22 17:48:33"
+   },
+   {
+    "file": "data2_3.csv",
+    "first": 5647,
+    "last": 8953,
+    "start": "2025-04-22 17:49:51",
+    "end": "2025-04-22 19:26:41"
+   },
+   {
+    "file": "data2_4.csv",
+    "first": 8954,
+    "last": 9675,
+    "start": "2025-04-22 19:31:11",
+    "end": "2025-04-22 19:46:25"
+   },
+   {
+    "file": "data2_5.csv",
+    "first": 9681,
+    "last": 10389,
+    "start": "2025-04-22 20:05:17",
+    "end": "2025-04-22 20:21:50"
+   },
+   {
+    "file": "data2_6.csv",
+    "first": 10390,
+    "last": 10634,
+    "start": "2025-04-22 20:30:51",
+    "end": "2025-04-22 20:36:06"
+   },
+   {
+    "file": "data2_7.csv",
+    "first": 10635,
+    "last": 11519,
+    "start": "2025-04-22 20:44:09",
+    "end": "2025-04-22 21:00:34"
+   }
+  ],
+  "entered_P1_by_samples": [
+   {
+    "first": 1,
+    "last": 2041,
+    "P1_kPa_abs": 231.3
+   },
+   {
+    "first": 2042,
+    "last": 2321,
+    "P1_kPa_abs": 234.3
+   },
+   {
+    "first": 2322,
+    "last": 5638,
+    "P1_kPa_abs": 231.3
+   },
+   {
+    "first": 5639,
+    "last": 5646,
+    "P1_kPa_abs": 114.3
+   },
+   {
+    "first": 5647,
+    "last": 9675,
+    "P1_kPa_abs": 231.3
+   },
+   {
+    "first": 9681,
+    "last": 11519,
+    "P1_kPa_abs": 251.3
+   }
+  ],
+  "duplicated_log_rows_sample_runs": [
+   [
+    6793,
+    6941
+   ],
+   [
+    8191,
+    8339
+   ],
+   [
+    8904,
+    8905
+   ],
+   [
+    8907,
+    8908
+   ]
+  ],
+  "events": {
+   "8191": {
+    "prev": [
+     "data2_3.csv",
+     4226.0,
+     "2025-04-22 18:59:32"
+    ],
+    "this": [
+     "data2_3.csv",
+     2286.0,
+     "2025-04-22 18:27:12"
+    ],
+    "wall_clock_jump_s": -1940.0,
+    "dp_prev_this": [
+     16.409,
+     16.409
+    ],
+    "Q_prev_this": [
+     6.867,
+     6.867
+    ],
+    "P1_prev_this": [
+     231.3,
+     231.3
+    ]
+   },
+   "8340": {
+    "prev": [
+     "data2_3.csv",
+     2444.0,
+     "2025-04-22 18:29:50"
+    ],
+    "this": [
+     "data2_3.csv",
+     4888.0,
+     "2025-04-22 19:10:34"
+    ],
+    "wall_clock_jump_s": 2444.0,
+    "dp_prev_this": [
+     18.038,
+     20.102
+    ],
+    "Q_prev_this": [
+     6.792,
+     6.565
+    ],
+    "P1_prev_this": [
+     231.3,
+     231.3
+    ]
+   },
+   "8954": {
+    "prev": [
+     "data2_3.csv",
+     5855.0,
+     "2025-04-22 19:26:41"
+    ],
+    "this": [
+     "data2_4.csv",
+     144.0,
+     "2025-04-22 19:31:11"
+    ],
+    "wall_clock_jump_s": 270.0,
+    "dp_prev_this": [
+     20.537,
+     23.36
+    ],
+    "Q_prev_this": [
+     6.68,
+     6.448
+    ],
+    "P1_prev_this": [
+     231.3,
+     231.3
+    ]
+   }
+  }
+ },
+ "assembly": {
+  "per_file": [
+   {
+    "file": "data2.csv",
+    "head_rows_not_used": 150,
+    "head_Q_over_10": 5,
+    "head_dp_range": [
+     0.0,
+     0.0
+    ],
+    "first_head_t_dp_over_21_776": null,
+    "tail_rows_not_used": 16,
+    "tail_Q_over_10": 9,
+    "tail_dp_range": [
+     10.001,
+     10.11
+    ],
+    "log_t_range": [
+     5.0,
+     7279.0
+    ],
+    "log_rows_in_used_span": 4050,
+    "removed_rows": 69,
+    "removed_rows_Q_over_10": 65,
+    "logger_pauses_over_15s": 12,
+    "logger_pause_total_s": 2753.0
+   },
+   {
+    "file": "data2_2.csv",
+    "head_rows_not_used": 303,
+    "head_Q_over_10": 0,
+    "head_dp_range": [
+     7.829,
+     11.304
+    ],
+    "first_head_t_dp_over_21_776": null,
+    "tail_rows_not_used": 0,
+    "tail_Q_over_10": 0,
+    "tail_dp_range": null,
+    "log_t_range": [
+     5.0,
+     3058.0
+    ],
+    "log_rows_in_used_span": 1665,
+    "removed_rows": 0,
+    "removed_rows_Q_over_10": 0,
+    "logger_pauses_over_15s": 6,
+    "logger_pause_total_s": 942.0
+   },
+   {
+    "file": "data2_3.csv",
+    "head_rows_not_used": 38,
+    "head_Q_over_10": 4,
+    "head_dp_range": [
+     15.54,
+     15.866
+    ],
+    "first_head_t_dp_over_21_776": null,
+    "tail_rows_not_used": 5,
+    "tail_Q_over_10": 0,
+    "tail_dp_range": [
+     21.405,
+     21.514
+    ],
+    "log_t_range": [
+     5.0,
+     5947.0
+    ],
+    "log_rows_in_used_span": 3882,
+    "removed_rows": 730,
+    "removed_rows_Q_over_10": 708,
+    "logger_pauses_over_15s": 13,
+    "logger_pause_total_s": 1743.0
+   },
+   {
+    "file": "data2_4.csv",
+    "head_rows_not_used": 131,
+    "head_Q_over_10": 128,
+    "head_dp_range": [
+     20.971,
+     24.99
+    ],
+    "first_head_t_dp_over_21_776": 20.0,
+    "tail_rows_not_used": 324,
+    "tail_Q_over_10": 307,
+    "tail_dp_range": [
+     28.683,
+     38.675
+    ],
+    "log_t_range": [
+     4.0,
+     1615.0
+    ],
+    "log_rows_in_used_span": 746,
+    "removed_rows": 24,
+    "removed_rows_Q_over_10": 24,
+    "logger_pauses_over_15s": 2,
+    "logger_pause_total_s": 319.0
+   },
+   {
+    "file": "data2_5.csv",
+    "head_rows_not_used": 119,
+    "head_Q_over_10": 0,
+    "head_dp_range": [
+     28.791,
+     29.008
+    ],
+    "first_head_t_dp_over_21_776": 5.0,
+    "tail_rows_not_used": 187,
+    "tail_Q_over_10": 155,
+    "tail_dp_range": [
+     37.915,
+     47.147
+    ],
+    "log_t_range": [
+     5.0,
+     1327.0
+    ],
+    "log_rows_in_used_span": 722,
+    "removed_rows": 14,
+    "removed_rows_Q_over_10": 13,
+    "logger_pauses_over_15s": 2,
+    "logger_pause_total_s": 218.0
+   },
+   {
+    "file": "data2_6.csv",
+    "head_rows_not_used": 224,
+    "head_Q_over_10": 29,
+    "head_dp_range": [
+     27.596,
+     52.252
+    ],
+    "first_head_t_dp_over_21_776": 4.0,
+    "tail_rows_not_used": 0,
+    "tail_Q_over_10": 0,
+    "tail_dp_range": null,
+    "log_t_range": [
+     4.0,
+     560.0
+    ],
+    "log_rows_in_used_span": 282,
+    "removed_rows": 37,
+    "removed_rows_Q_over_10": 37,
+    "logger_pauses_over_15s": 0,
+    "logger_pause_total_s": 0.0
+   },
+   {
+    "file": "data2_7.csv",
+    "head_rows_not_used": 280,
+    "head_Q_over_10": 0,
+    "head_dp_range": [
+     34.548,
+     51.708
+    ],
+    "first_head_t_dp_over_21_776": 5.0,
+    "tail_rows_not_used": 0,
+    "tail_Q_over_10": 0,
+    "tail_dp_range": null,
+    "log_t_range": [
+     5.0,
+     1300.0
+    ],
+    "log_rows_in_used_span": 885,
+    "removed_rows": 0,
+    "removed_rows_Q_over_10": 0,
+    "logger_pauses_over_15s": 1,
+    "logger_pause_total_s": 17.0
+   }
+  ],
+  "removed_rows_total": 874,
+  "removed_rows_Q_over_10_total": 847,
+  "head_tail_rows_not_used_total": 1777,
+  "logger_prompt_note": "the logger stops for an operator prompt to re-enter the gauge pressure about every 280 rows",
+  "episode_removed_before_sample_8340": {
+   "arduino_t_s": [
+    4227,
+    4887
+   ],
+   "rows": 537,
+   "rows_Q_over_10": 523,
+   "Q_median": 22.179,
+   "orifice_adc_range_when_Q_over_10": [
+    619,
+    1021
+   ],
+   "filter_dp_first_last": [
+    16.518,
+    20.319
+   ],
+   "last_sample_before_in_real_time": {
+    "sample": 8190,
+    "arduino_t_s": 4226,
+    "dp": 16.409
+   },
+   "inserted_instead": "samples 8,191-8,339 = repeat of samples 6,793-6,941 (arduino t 2286-2444)"
+  },
+  "orifice_adc_when_any_Q_over_20": [
+   837,
+   1022
+  ]
+ },
+ "arduino_conversion": {
+  "Q_logged_over_orifice_equation": {
+   "median": 0.99991,
+   "p01_p99": [
+    0.99983,
+    1.00003
+   ],
+   "assumptions": "C=0.60, eps=1, d=6.9 mm, D=53.2 mm, T=14.85 C, rho=P1/(R T), P1=entered gauge + 101.3 kPa"
+  },
+  "volts_per_count": 0.004888,
+  "dp1_vs_volts": [
+   22.2227,
+   -4.4459
+  ],
+  "dp2_vs_volts": [
+   22.2221,
+   -4.4437
+  ],
+  "MPX5100_nominal": "V = 5.0 (0.009 P + 0.04)  =>  P = 22.222 V - 4.444 kPa",
+  "kPa_per_count": 0.1086,
+  "dp2_zero_clip_max_volts": 0.196
+ },
+ "duplicate_block_effect": {
+  "all_test": {
+   "n": 1740,
+   "auc_xgb": 0.975,
+   "auc_rf": 0.971,
+   "auc_raw_dp": 0.993,
+   "f1_xgb": 0.699,
+   "f1_rf": 0.945
+  },
+  "without_8191_8339": {
+   "n": 1591,
+   "auc_xgb": 0.971,
+   "auc_rf": 0.967,
+   "auc_raw_dp": 0.992,
+   "f1_xgb": 0.699,
+   "f1_rf": 0.945
+  },
+  "block_labels": [
+   0
+  ],
+  "block_flags_xgb": 0
+ }
+}

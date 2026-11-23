@@ -1,0 +1,26 @@
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Starting system training on sample_filter_data.csv
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Loaded 2000 samples with 7 columns
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Pressure-based clogging: 0 samples
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Resistance-based clogging: 626 samples
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Baseline resistance: 0.781
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Binary target distribution: [1374  626]
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Multiclass target distribution: [660 660 680]
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Temporal split: train=1600, test=400
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Feature engineering fitted with 68 features
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Starting production model training
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Binary class distribution: {np.int64(0): np.int64(1374), np.int64(1): np.int64(226)}
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Binary RandomForest: F1=1.000, AUC=nan
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Binary LogisticRegression: F1=0.999, AUC=nan
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Binary XGBoost: F1=1.000, AUC=nan
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Best binary model: F1=1.000
+2025-09-21 19:37:41 [INFO] filter_analysis_prod: Multiclass distribution: {np.int64(0): np.int64(660), np.int64(1): np.int64(660), np.int64(2): np.int64(280)}
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: Multiclass: F1=1.000
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: Anomaly detection: F1=1.000
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: System saved to models\system_20250921_193742
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: System training completed successfully
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: Training report saved to reports\training_report_20250921_193742.txt
+2025-09-21 19:37:42 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes

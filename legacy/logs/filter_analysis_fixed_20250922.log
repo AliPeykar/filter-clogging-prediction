@@ -1,0 +1,89 @@
+2025-09-22 11:39:12 [INFO] filter_analysis_fixed: FIXED Production Filter Analysis System initialized
+2025-09-22 11:39:12 [INFO] filter_analysis_fixed: Starting FIXED system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Loaded 11519 samples with 9 columns
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Using existing filter_status labels
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Binary target distribution: [8942 2577]
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Multiclass target distribution: [4594 4348 2577]
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Temporal split: train ends at 9215, test starts at 9216
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Split: train=9215, test=2304
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Fitting production feature engineer
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Feature engineering fitted with 114 features
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Available sensors: ['flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score']
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Starting production model training
+2025-09-22 11:39:13 [ERROR] filter_analysis_fixed: FIXED system training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 11:39:13 [ERROR] filter_analysis_fixed: Full error: Traceback (most recent call last):
+  File "c:\Users\ali peykar\Desktop\xgboost\newboost\final2\refactored_filter_system.py", line 1454, in train_system
+    metrics = self.trainer.train_models(
+        X_train, X_test, y_binary_train, y_binary_test,
+        y_multi_train, y_multi_test
+    )
+  File "c:\Users\ali peykar\Desktop\xgboost\newboost\final2\refactored_filter_system.py", line 935, in train_models
+    X_train_scaled = scaler.fit_transform(X_train)
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\base.py", line 894, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\preprocessing\_data.py", line 1638, in fit
+    X = validate_data(
+        self,
+    ...<3 lines>...
+        ensure_all_finite="allow-nan",
+    )
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\utils\validation.py", line 2954, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\utils\validation.py", line 1105, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<4 lines>...
+        input_name=input_name,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ali peykar\AppData\Roaming\Python\Python313\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float64').
+
+2025-09-22 11:39:13 [INFO] filter_analysis_fixed: Operation completed in 0.01 minutes
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: FIXED Production Filter Analysis System initialized
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Starting FIXED system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Loaded 11519 samples with 9 columns
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Using existing filter_status labels
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Binary target distribution: [8942 2577]
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Multiclass target distribution: [4594 4348 2577]
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Temporal split: train ends at 9215, test starts at 9216
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Split: train=9215, test=2304
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Fitting production feature engineer
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Feature engineering fitted with 114 features
+2025-09-22 14:17:11 [INFO] filter_analysis_fixed: Available sensors: ['flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score']
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Starting production model training
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Binary classes: {np.int64(0): np.int64(8942), np.int64(1): np.int64(273)}
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Multi classes: {np.int64(0): np.int64(4594), np.int64(1): np.int64(4348), np.int64(2): np.int64(273)}
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Binary class distribution: {np.int64(0): np.int64(8942), np.int64(1): np.int64(273)}
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Binary RandomForest: F1=1.000, AUC=nan
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Binary LogisticRegression: F1=0.999, AUC=nan
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Binary XGBoost: F1=1.000, AUC=nan
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Best binary model: F1=1.000
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Multiclass distribution: {np.int64(0): np.int64(4594), np.int64(1): np.int64(4348), np.int64(2): np.int64(273)}
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Multiclass: F1=1.000
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Anomaly detection: F1=1.000
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: FIXED system saved to models\fixed_system_20250922_141712
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: FIXED system training completed successfully
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: FIXED training report saved to reports\fixed_training_report_20250922_141712.txt
+2025-09-22 14:17:12 [INFO] filter_analysis_fixed: Operation completed in 0.03 minutes

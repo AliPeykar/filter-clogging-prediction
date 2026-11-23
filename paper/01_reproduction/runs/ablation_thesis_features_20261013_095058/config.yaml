@@ -1,0 +1,13 @@
+# ABLATION: thesis-full feature set (includes label-constituent columns).
+# Expected to reproduce the legacy ~1.0 metrics, quantifying the inflation
+# caused by label circularity. Reported as an ablation in the paper, never
+# as a headline result.
+name: ablation_thesis_features
+feature_set: thesis_full
+split:
+  scheme: held_out_transition
+horizons: [0]
+run_risk_levels: false
+run_shap: false
+run_figures: true
+output_root: paper/01_reproduction/runs

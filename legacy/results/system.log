@@ -1,0 +1,246 @@
+2025-09-21 16:39:27,675 - filter_analysis - INFO - Filter Analysis System v10.0 initialized successfully
+2025-09-21 16:39:27,675 - filter_analysis - INFO - Starting complete filter analysis pipeline v10.0
+2025-09-21 16:39:27,675 - filter_analysis - INFO - Loading data from: C:\Users\ali peykar\Desktop\xgboost\newboost\final2\Comprehensive_Filter_Analysis.xlsx
+2025-09-21 16:39:28,116 - filter_analysis - INFO - Loaded 11519 rows, 9 columns
+2025-09-21 16:39:28,116 - filter_analysis - INFO - Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-21 16:39:28,124 - filter_analysis - INFO - Data loading completed successfully
+2025-09-21 16:39:28,124 - filter_analysis - INFO - Creating target variables from sensor data
+2025-09-21 16:39:28,328 - filter_analysis - INFO - Binary target distribution: [8063 3456]
+2025-09-21 16:39:28,328 - filter_analysis - INFO - Multiclass target distribution: [2880 2880 2879 2880]
+2025-09-21 16:39:28,329 - filter_analysis - INFO - RUL target range: 0.0 to 200.0
+2025-09-21 16:39:28,329 - filter_analysis - INFO - Fitting feature engineering pipeline
+2025-09-21 16:39:28,462 - filter_analysis - INFO - Feature engineering fitted with 99 features
+2025-09-21 16:39:28,626 - filter_analysis - INFO - Feature engineering completed: 99 features
+2025-09-21 16:39:28,626 - filter_analysis - INFO - Temporal split: train=9215, test=2304
+2025-09-21 16:39:28,626 - filter_analysis - INFO - Starting model training
+2025-09-21 16:39:28,627 - filter_analysis - ERROR - Analysis pipeline failed: could not convert string to float: 'Not Clogged'
+2025-09-21 16:42:42,316 - filter_analysis - INFO - Filter Analysis System v10.0 initialized successfully
+2025-09-21 16:42:42,317 - filter_analysis - INFO - Starting complete filter analysis pipeline v10.0
+2025-09-21 16:42:42,317 - filter_analysis - INFO - Loading data from: C:\Users\ali peykar\Desktop\xgboost\newboost\final2\Comprehensive_Filter_Analysis.xlsx
+2025-09-21 16:42:42,713 - filter_analysis - INFO - Loaded 11519 rows, 9 columns
+2025-09-21 16:42:42,714 - filter_analysis - INFO - Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-21 16:42:42,716 - filter_analysis - INFO - Removing target columns from features: ['filter_status']
+2025-09-21 16:42:42,717 - filter_analysis - INFO - Data loading completed successfully
+2025-09-21 16:42:42,717 - filter_analysis - INFO - Creating target variables from sensor data
+2025-09-21 16:42:42,717 - filter_analysis - INFO - Found original status column: _original_filter_status
+2025-09-21 16:42:42,718 - filter_analysis - INFO - Original status distribution: {'Not Clogged': 8942, 'Clogged': 2577}
+2025-09-21 16:42:42,911 - filter_analysis - INFO - Binary target distribution: [8063 3456]
+2025-09-21 16:42:42,911 - filter_analysis - INFO - Multiclass target distribution: [2880 2880 2879 2880]
+2025-09-21 16:42:42,911 - filter_analysis - INFO - RUL target range: 0.0 to 200.0
+2025-09-21 16:42:42,912 - filter_analysis - INFO - Fitting feature engineering pipeline
+2025-09-21 16:42:42,914 - filter_analysis - INFO - Processing sensor columns: ['flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score', 'time']
+2025-09-21 16:42:42,914 - filter_analysis - INFO - Removing non-numeric column: _original_filter_status
+2025-09-21 16:42:42,915 - filter_analysis - INFO - Final numeric columns for feature engineering: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score']
+2025-09-21 16:42:43,044 - filter_analysis - INFO - Feature engineering fitted with 98 features
+2025-09-21 16:42:43,198 - filter_analysis - INFO - Feature engineering completed: 98 features
+2025-09-21 16:42:43,198 - filter_analysis - INFO - Temporal split: train=9215, test=2304
+2025-09-21 16:42:43,198 - filter_analysis - INFO - Starting model training
+2025-09-21 16:42:43,199 - filter_analysis - ERROR - Analysis pipeline failed: float() argument must be a string or a real number, not 'Timestamp'
+2025-09-21 16:49:46,665 - filter_analysis - INFO - Filter Analysis System v10.0 initialized successfully
+2025-09-21 16:49:46,666 - filter_analysis - INFO - Starting complete filter analysis pipeline v10.0
+2025-09-21 16:49:46,666 - filter_analysis - INFO - Loading data from: C:\Users\ali peykar\Desktop\xgboost\newboost\final2\Comprehensive_Filter_Analysis.xlsx
+2025-09-21 16:49:47,052 - filter_analysis - INFO - Loaded 11519 rows, 9 columns
+2025-09-21 16:49:47,053 - filter_analysis - INFO - Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-21 16:49:47,053 - filter_analysis - INFO - Removing target columns from features: ['filter_status']
+2025-09-21 16:49:47,054 - filter_analysis - INFO - Keeping 'time' column as numeric sequence
+2025-09-21 16:49:47,055 - filter_analysis - INFO - Data loading completed successfully
+2025-09-21 16:49:47,055 - filter_analysis - INFO - === POST-LOADING DATA ANALYSIS ===
+2025-09-21 16:49:47,055 - filter_analysis - INFO - DataFrame shape: (11519, 9)
+2025-09-21 16:49:47,055 - filter_analysis - INFO - DataFrame columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', '_original_filter_status']
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'time': dtype=int64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'flowrate': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'dp': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'short_ema': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'long_ema': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'adaptive_cusum': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'cusum_threshold': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column 'validation_score': dtype=int64, is_datetime=False, is_numeric=True
+2025-09-21 16:49:47,056 - filter_analysis - INFO - Column '_original_filter_status': dtype=object, is_datetime=False, is_numeric=False
+2025-09-21 16:49:47,057 - filter_analysis - INFO -   Sample values: ['Not Clogged', 'Not Clogged', 'Not Clogged']
+2025-09-21 16:49:47,057 - filter_analysis - INFO - === CREATING TARGETS ===
+2025-09-21 16:49:47,057 - filter_analysis - INFO - Creating target variables from sensor data
+2025-09-21 16:49:47,057 - filter_analysis - INFO - Found original status column: _original_filter_status
+2025-09-21 16:49:47,058 - filter_analysis - INFO - Original status distribution: {'Not Clogged': 8942, 'Clogged': 2577}
+2025-09-21 16:49:47,241 - filter_analysis - INFO - Binary target distribution: [8063 3456]
+2025-09-21 16:49:47,242 - filter_analysis - INFO - Multiclass target distribution: [2880 2880 2879 2880]
+2025-09-21 16:49:47,242 - filter_analysis - INFO - RUL target range: 0.0 to 200.0
+2025-09-21 16:49:47,242 - filter_analysis - INFO - Target creation completed successfully
+2025-09-21 16:49:47,242 - filter_analysis - INFO - === FEATURE ENGINEERING ===
+2025-09-21 16:49:47,242 - filter_analysis - INFO - Training DataFrame shape: (9215, 9)
+2025-09-21 16:49:47,242 - filter_analysis - INFO - Training DataFrame columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', '_original_filter_status']
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'time': dtype=int64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'flowrate': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'dp': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'short_ema': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'long_ema': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'adaptive_cusum': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,243 - filter_analysis - INFO - Train column 'cusum_threshold': dtype=float64, is_datetime=False
+2025-09-21 16:49:47,244 - filter_analysis - INFO - Train column 'validation_score': dtype=int64, is_datetime=False
+2025-09-21 16:49:47,244 - filter_analysis - INFO - Train column '_original_filter_status': dtype=object, is_datetime=False
+2025-09-21 16:49:47,244 - filter_analysis - INFO - Fitting feature engineering pipeline
+2025-09-21 16:49:47,245 - filter_analysis - INFO - === DEBUGGING COLUMN TYPES ===
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'time': dtype=int64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'flowrate': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'dp': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'short_ema': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'long_ema': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'adaptive_cusum': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'cusum_threshold': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column 'validation_score': dtype=int64, numeric=True, datetime=False, object=False
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Column '_original_filter_status': dtype=object, numeric=False, datetime=False, object=True
+2025-09-21 16:49:47,246 - filter_analysis - INFO - Removing object column: _original_filter_status
+2025-09-21 16:49:47,247 - filter_analysis - INFO - Removed 1 problematic columns
+2025-09-21 16:49:47,293 - filter_analysis - INFO - Final columns for processing: ['time', 'flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score']
+2025-09-21 16:49:47,293 - filter_analysis - INFO - Column dtypes: {'time': dtype('int64'), 'flowrate': dtype('float64'), 'dp': dtype('float64'), 'adaptive_cusum': dtype('float64'), 'short_ema': dtype('float64'), 'long_ema': dtype('float64'), 'cusum_threshold': dtype('float64'), 'validation_score': dtype('int64')}
+2025-09-21 16:49:47,424 - filter_analysis - INFO - Feature engineering fitted with 97 features
+2025-09-21 16:49:47,567 - filter_analysis - INFO - Feature engineering completed: 97 features
+2025-09-21 16:49:47,567 - filter_analysis - INFO - === TEMPORAL SPLITTING ===
+2025-09-21 16:49:47,567 - filter_analysis - INFO - Temporal split: train=9215, test=2304
+2025-09-21 16:49:47,567 - filter_analysis - INFO - Temporal splitting completed successfully
+2025-09-21 16:49:47,567 - filter_analysis - INFO - === MODEL TRAINING ===
+2025-09-21 16:49:47,567 - filter_analysis - INFO - Starting model training
+2025-09-21 16:49:47,581 - filter_analysis - INFO - Training binary classification models
+2025-09-21 16:49:47,581 - filter_analysis - INFO - Binary class distribution: {np.int64(0): np.int64(8062), np.int64(1): np.int64(1153)}
+2025-09-21 16:49:47,745 - filter_analysis - INFO - Binary RandomForest: F1=1.000, AUC=1.000
+2025-09-21 16:49:48,260 - filter_analysis - INFO - Binary LogisticRegression: F1=1.000, AUC=1.000
+2025-09-21 16:49:48,351 - filter_analysis - INFO - Binary XGBoost: F1=1.000, AUC=1.000
+2025-09-21 16:49:52,456 - filter_analysis - INFO - Binary CatBoost: F1=1.000, AUC=1.000
+2025-09-21 16:49:52,456 - filter_analysis - INFO - Training multiclass classification models
+2025-09-21 16:49:52,456 - filter_analysis - INFO - Multiclass class distribution: {np.int64(0): np.int64(2879), np.int64(1): np.int64(2880), np.int64(2): np.int64(2879), np.int64(3): np.int64(577)}
+2025-09-21 16:49:52,676 - filter_analysis - INFO - Multiclass RandomForest: F1=1.000
+2025-09-21 16:49:54,632 - filter_analysis - INFO - Multiclass LogisticRegression: F1=1.000
+2025-09-21 16:49:55,010 - filter_analysis - INFO - Multiclass XGBoost: F1=0.999
+2025-09-21 16:50:05,795 - filter_analysis - INFO - Multiclass CatBoost: F1=0.997
+2025-09-21 16:50:05,795 - filter_analysis - INFO - Training RUL regression models
+2025-09-21 16:50:06,592 - filter_analysis - INFO - Regression RandomForest: R2=-0.430, RMSE=95.07
+2025-09-21 16:50:06,617 - filter_analysis - INFO - Regression LinearRegression: R2=-0.296, RMSE=90.52
+2025-09-21 16:50:06,732 - filter_analysis - INFO - Regression XGBoost: R2=-0.427, RMSE=94.98
+2025-09-21 16:50:06,732 - filter_analysis - INFO - Training anomaly detection model
+2025-09-21 16:50:06,889 - filter_analysis - INFO - Anomaly detection: F1=1.000, Accuracy=1.000
+2025-09-21 16:50:06,889 - filter_analysis - INFO - Model training completed successfully
+2025-09-21 16:50:06,889 - filter_analysis - INFO - Creating visualizations
+2025-09-21 16:50:09,159 - filter_analysis - INFO - Visualizations created successfully
+2025-09-21 16:50:09,163 - filter_analysis - INFO - Analysis report saved to: results\analysis_report_20250921_165009.txt
+2025-09-21 16:50:09,252 - filter_analysis - INFO - Models saved to: models\models_20250921_165009
+2025-09-21 16:50:09,252 - filter_analysis - INFO - Analysis pipeline completed successfully!
+2025-09-21 17:05:05,637 - filter_analysis - INFO - Filter Analysis System v10.0 initialized successfully
+2025-09-21 17:05:05,638 - filter_analysis - INFO - Starting complete filter analysis pipeline v10.0
+2025-09-21 17:05:05,638 - filter_analysis - INFO - Loading data from: C:\Users\ali peykar\Desktop\xgboost\newboost\final2\Comprehensive_Filter_Analysis.xlsx
+2025-09-21 17:05:06,044 - filter_analysis - INFO - Loaded 11519 rows, 9 columns
+2025-09-21 17:05:06,044 - filter_analysis - INFO - Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-21 17:05:06,044 - filter_analysis - INFO - Removing target columns from features: ['filter_status']
+2025-09-21 17:05:06,045 - filter_analysis - INFO - Keeping 'time' column as numeric sequence
+2025-09-21 17:05:06,046 - filter_analysis - INFO - Data loading completed successfully
+2025-09-21 17:05:06,046 - filter_analysis - INFO - === POST-LOADING DATA ANALYSIS ===
+2025-09-21 17:05:06,046 - filter_analysis - INFO - DataFrame shape: (11519, 9)
+2025-09-21 17:05:06,046 - filter_analysis - INFO - DataFrame columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', '_original_filter_status']
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'time': dtype=int64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'flowrate': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'dp': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'short_ema': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'long_ema': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,047 - filter_analysis - INFO - Column 'adaptive_cusum': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,048 - filter_analysis - INFO - Column 'cusum_threshold': dtype=float64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,048 - filter_analysis - INFO - Column 'validation_score': dtype=int64, is_datetime=False, is_numeric=True
+2025-09-21 17:05:06,048 - filter_analysis - INFO - Column '_original_filter_status': dtype=object, is_datetime=False, is_numeric=False
+2025-09-21 17:05:06,048 - filter_analysis - INFO -   Sample values: ['Not Clogged', 'Not Clogged', 'Not Clogged']
+2025-09-21 17:05:06,048 - filter_analysis - INFO - === CREATING TARGETS ===
+2025-09-21 17:05:06,049 - filter_analysis - INFO - Creating target variables from sensor data
+2025-09-21 17:05:06,049 - filter_analysis - INFO - Found original status column: _original_filter_status
+2025-09-21 17:05:06,049 - filter_analysis - INFO - Original status distribution: {'Not Clogged': 8942, 'Clogged': 2577}
+2025-09-21 17:05:06,231 - filter_analysis - INFO - Binary target distribution: [8063 3456]
+2025-09-21 17:05:06,231 - filter_analysis - INFO - Multiclass target distribution: [2880 2880 2879 2880]
+2025-09-21 17:05:06,232 - filter_analysis - INFO - RUL target range: 0.0 to 200.0
+2025-09-21 17:05:06,232 - filter_analysis - INFO - Target creation completed successfully
+2025-09-21 17:05:06,232 - filter_analysis - INFO - === FEATURE ENGINEERING ===
+2025-09-21 17:05:06,232 - filter_analysis - INFO - Training DataFrame shape: (9215, 9)
+2025-09-21 17:05:06,232 - filter_analysis - INFO - Training DataFrame columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', '_original_filter_status']
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'time': dtype=int64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'flowrate': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'dp': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'short_ema': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'long_ema': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'adaptive_cusum': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'cusum_threshold': dtype=float64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column 'validation_score': dtype=int64, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Train column '_original_filter_status': dtype=object, is_datetime=False
+2025-09-21 17:05:06,233 - filter_analysis - INFO - Fitting feature engineering pipeline
+2025-09-21 17:05:06,235 - filter_analysis - INFO - === DEBUGGING COLUMN TYPES ===
+2025-09-21 17:05:06,235 - filter_analysis - INFO - Column 'time': dtype=int64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,235 - filter_analysis - INFO - Column 'flowrate': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'dp': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'short_ema': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'long_ema': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'adaptive_cusum': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'cusum_threshold': dtype=float64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column 'validation_score': dtype=int64, numeric=True, datetime=False, object=False
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Column '_original_filter_status': dtype=object, numeric=False, datetime=False, object=True
+2025-09-21 17:05:06,236 - filter_analysis - INFO - Removing object column: _original_filter_status
+2025-09-21 17:05:06,237 - filter_analysis - INFO - Removed 1 problematic columns
+2025-09-21 17:05:06,237 - filter_analysis - INFO - [OK] Keeping sensor column: time
+2025-09-21 17:05:06,237 - filter_analysis - INFO - [OK] Keeping sensor column: flowrate
+2025-09-21 17:05:06,237 - filter_analysis - INFO - [OK] Keeping sensor column: dp
+2025-09-21 17:05:06,237 - filter_analysis - INFO - [OK] Keeping sensor column: adaptive_cusum
+2025-09-21 17:05:06,237 - filter_analysis - INFO - [OK] Keeping sensor column: short_ema
+2025-09-21 17:05:06,238 - filter_analysis - INFO - [OK] Keeping sensor column: long_ema
+2025-09-21 17:05:06,238 - filter_analysis - INFO - [OK] Keeping sensor column: cusum_threshold
+2025-09-21 17:05:06,238 - filter_analysis - INFO - [OK] Keeping sensor column: validation_score
+2025-09-21 17:05:06,239 - filter_analysis - INFO - Final columns for processing: ['time', 'flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score']
+2025-09-21 17:05:06,239 - filter_analysis - INFO - Column dtypes: {'time': dtype('int64'), 'flowrate': dtype('float64'), 'dp': dtype('float64'), 'adaptive_cusum': dtype('float64'), 'short_ema': dtype('float64'), 'long_ema': dtype('float64'), 'cusum_threshold': dtype('float64'), 'validation_score': dtype('int64')}
+2025-09-21 17:05:06,239 - filter_analysis - INFO - Adding basic features for: ['flowrate', 'dp', 'adaptive_cusum']
+2025-09-21 17:05:06,241 - filter_analysis - INFO - Added basic features for flowrate
+2025-09-21 17:05:06,242 - filter_analysis - INFO - Added basic features for dp
+2025-09-21 17:05:06,243 - filter_analysis - INFO - Added basic features for adaptive_cusum
+2025-09-21 17:05:06,244 - filter_analysis - INFO - Adding rolling features for: ['flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema']
+2025-09-21 17:05:06,266 - filter_analysis - INFO - Rolling features completed
+2025-09-21 17:05:06,266 - filter_analysis - INFO - Adding lag features for: ['flowrate', 'dp', 'adaptive_cusum']
+2025-09-21 17:05:06,270 - filter_analysis - INFO - Lag features completed
+2025-09-21 17:05:06,270 - filter_analysis - INFO - Adding domain-specific filter features
+2025-09-21 17:05:06,272 - filter_analysis - INFO - Added flow-pressure features
+2025-09-21 17:05:06,273 - filter_analysis - INFO - Added EMA features
+2025-09-21 17:05:06,274 - filter_analysis - INFO - Added CUSUM features
+2025-09-21 17:05:06,274 - filter_analysis - INFO - Domain-specific features completed
+2025-09-21 17:05:06,378 - filter_analysis - INFO - Feature engineering fitted with 97 features
+2025-09-21 17:05:06,525 - filter_analysis - INFO - Feature engineering completed: 97 features
+2025-09-21 17:05:06,526 - filter_analysis - INFO - === TEMPORAL SPLITTING ===
+2025-09-21 17:05:06,526 - filter_analysis - INFO - Temporal split: train=9215, test=2304
+2025-09-21 17:05:06,526 - filter_analysis - INFO - Temporal splitting completed successfully
+2025-09-21 17:05:06,526 - filter_analysis - INFO - === MODEL TRAINING ===
+2025-09-21 17:05:06,526 - filter_analysis - INFO - Starting model training
+2025-09-21 17:05:06,540 - filter_analysis - INFO - Training binary classification models
+2025-09-21 17:05:06,540 - filter_analysis - INFO - Binary class distribution: {np.int64(0): np.int64(8062), np.int64(1): np.int64(1153)}
+2025-09-21 17:05:06,714 - filter_analysis - INFO - Binary RandomForest: F1=1.000, AUC=1.000
+2025-09-21 17:05:07,225 - filter_analysis - INFO - Binary LogisticRegression: F1=1.000, AUC=1.000
+2025-09-21 17:05:07,320 - filter_analysis - INFO - Binary XGBoost: F1=1.000, AUC=1.000
+2025-09-21 17:05:11,415 - filter_analysis - INFO - Binary CatBoost: F1=1.000, AUC=1.000
+2025-09-21 17:05:11,415 - filter_analysis - INFO - Training multiclass classification models
+2025-09-21 17:05:11,415 - filter_analysis - INFO - Multiclass class distribution: {np.int64(0): np.int64(2879), np.int64(1): np.int64(2880), np.int64(2): np.int64(2879), np.int64(3): np.int64(577)}
+2025-09-21 17:05:11,634 - filter_analysis - INFO - Multiclass RandomForest: F1=1.000
+2025-09-21 17:05:13,554 - filter_analysis - INFO - Multiclass LogisticRegression: F1=1.000
+2025-09-21 17:05:13,923 - filter_analysis - INFO - Multiclass XGBoost: F1=0.999
+2025-09-21 17:05:25,130 - filter_analysis - INFO - Multiclass CatBoost: F1=0.997
+2025-09-21 17:05:25,130 - filter_analysis - INFO - Training RUL regression models
+2025-09-21 17:05:25,905 - filter_analysis - INFO - Regression RandomForest: R2=-0.430, RMSE=95.07
+2025-09-21 17:05:25,930 - filter_analysis - INFO - Regression LinearRegression: R2=-0.296, RMSE=90.52
+2025-09-21 17:05:26,038 - filter_analysis - INFO - Regression XGBoost: R2=-0.427, RMSE=94.98
+2025-09-21 17:05:26,038 - filter_analysis - INFO - Training anomaly detection model
+2025-09-21 17:05:26,198 - filter_analysis - INFO - Anomaly detection: F1=1.000, Accuracy=1.000
+2025-09-21 17:05:26,199 - filter_analysis - INFO - Model training completed successfully
+2025-09-21 17:05:26,199 - filter_analysis - INFO - Creating visualizations
+2025-09-21 17:05:28,076 - filter_analysis - INFO - Visualizations created successfully
+2025-09-21 17:05:28,080 - filter_analysis - INFO - Analysis report saved to: results\analysis_report_20250921_170528.txt
+2025-09-21 17:05:28,169 - filter_analysis - INFO - Models saved to: models\models_20250921_170528
+2025-09-21 17:05:28,169 - filter_analysis - INFO - Analysis pipeline completed successfully!
+2025-09-27 16:31:54,100 - __main__ - INFO - Filter Analysis System initialized successfully
+2025-09-27 16:31:54,101 - __main__ - INFO - Starting complete filter analysis pipeline
+2025-09-27 16:31:54,101 - __main__ - INFO - Loading data from: C:\Users\ali peykar\Desktop\xgboost\newboost\final2\Comprehensive_Filter_Analysis.xlsx
+2025-09-27 16:31:54,499 - __main__ - INFO - Loaded 11519 rows, 9 columns
+2025-09-27 16:31:54,520 - __main__ - INFO - Processed time column: time
+2025-09-27 16:31:54,521 - __main__ - INFO - Data loading completed successfully
+2025-09-27 16:31:54,521 - __main__ - INFO - Creating target variables from sensor data
+2025-09-27 16:31:54,714 - __main__ - INFO - Fitting feature engineering pipeline
+2025-09-27 16:31:55,169 - __main__ - INFO - Feature engineering fitted with 578 features
+2025-09-27 16:31:55,775 - __main__ - INFO - Feature engineering completed: 578 features
+2025-09-27 16:31:55,775 - __main__ - INFO - Temporal split: train=9215, test=2304
+2025-09-27 16:31:55,776 - __main__ - INFO - Starting model training
+2025-09-27 16:31:55,776 - __main__ - ERROR - Analysis pipeline failed: float() argument must be a string or a real number, not 'Timestamp'

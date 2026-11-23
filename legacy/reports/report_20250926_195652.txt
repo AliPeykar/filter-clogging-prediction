@@ -1,0 +1,67 @@
+FILTER ANALYSIS TRAINING REPORT
+============================================================
+Timestamp: 20250926_195652
+Optimization Used: True
+
+Model Performance:
+  Accuracy: 1.000
+  F1 Score: 1.000
+
+Optimized Hyperparameters:
+  n_estimators: 247
+  max_depth: 5
+  min_samples_split: 18
+  min_samples_leaf: 6
+  max_features: 0.7
+  criterion: entropy
+  bootstrap: False
+
+============================================================
+GENETIC ALGORITHM OPTIMIZATION REPORT
+============================================================
+Final Best Score: 1.0000
+Total Generations: 15
+Population Size: 20
+Mutation Rate: 0.2
+Elite Size: 4
+
+Best Hyperparameters Found:
+  - n_estimators: 247
+  - max_depth: 5
+  - min_samples_split: 18
+  - min_samples_leaf: 6
+  - max_features: 0.7
+  - criterion: entropy
+  - bootstrap: False
+
+Evolution Progress:
+  Gen   1: Best=1.0000, Avg=1.0000
+  Gen   4: Best=1.0000, Avg=1.0000
+  Gen   7: Best=1.0000, Avg=1.0000
+  Gen  10: Best=1.0000, Avg=1.0000
+  Gen  13: Best=1.0000, Avg=1.0000
+Top 15 Feature Importances:
+   1. flowrate                 : 0.000000
+   2. dp                       : 0.000000
+   3. short_ema                : 0.000000
+   4. long_ema                 : 0.000000
+   5. resistance               : 0.000000
+   6. flowrate_roll_5          : 0.000000
+   7. dp_roll_5                : 0.000000
+   8. flowrate_roll_10         : 0.000000
+   9. dp_roll_10               : 0.000000
+  10. flowrate_roll_20         : 0.000000
+  11. dp_roll_20               : 0.000000
+  12. flowrate_change          : 0.000000
+  13. dp_change                : 0.000000
+  14. flow_dp_product          : 0.000000
+  15. flow_dp_ratio            : 0.000000
+
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           1       1.00      1.00      1.00      2304
+
+    accuracy                           1.00      2304
+   macro avg       1.00      1.00      1.00      2304
+weighted avg       1.00      1.00      1.00      2304

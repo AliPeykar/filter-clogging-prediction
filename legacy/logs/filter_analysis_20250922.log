@@ -1,0 +1,94 @@
+2025-09-22 10:38:38 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 10:38:38 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Pressure-based clogging: 1015 samples
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Resistance-based clogging: 10578 samples
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Baseline resistance: 0.031
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Binary target distribution: [  941 10578]
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Multiclass target distribution: [  941     0 10578]
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 10:38:39 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 10:38:39 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Pressure-based clogging: 1015 samples
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Resistance-based clogging: 10578 samples
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Baseline resistance: 0.031
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Binary target distribution: [  941 10578]
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Multiclass target distribution: [  941     0 10578]
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 10:55:57 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 10:55:57 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Pressure-based clogging: 1015 samples
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Resistance-based clogging: 10578 samples
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Baseline resistance: 0.031
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Binary target distribution: [  941 10578]
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Multiclass target distribution: [  941     0 10578]
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 10:56:10 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 10:56:11 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 10:56:11 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 10:56:11 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 10:56:11 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Pressure-based clogging: 1015 samples
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Resistance-based clogging: 10578 samples
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Baseline resistance: 0.031
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Binary target distribution: [  941 10578]
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Multiclass target distribution: [  941     0 10578]
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 11:02:02 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 11:02:02 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes
+2025-09-22 11:04:04 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 11:04:04 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Creating domain-validated targets
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Pressure-based clogging: 1015 samples
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Flow-based clogging: 0 samples
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Resistance-based clogging: 10578 samples
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Baseline resistance: 0.031
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Binary target distribution: [  941 10578]
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Multiclass target distribution: [  941     0 10578]
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 11:04:05 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 11:04:05 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Production Filter Analysis System initialized
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Starting system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Loaded 11519 samples with 9 columns
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Creating targets from data
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Found existing labels in filter_status: ['Not Clogged' 'Clogged']
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Using existing filter_status labels for binary target
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Binary target distribution: [8942 2577]
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Multiclass target distribution: [3803 3819 3897]
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Temporal split: train=9215, test=2304
+2025-09-22 11:13:41 [INFO] filter_analysis_prod: Fitting production feature engineer
+2025-09-22 11:13:42 [INFO] filter_analysis_prod: Feature engineering fitted with 78 features
+2025-09-22 11:13:42 [INFO] filter_analysis_prod: Starting production model training
+2025-09-22 11:13:42 [ERROR] filter_analysis_prod: System training failed: Input X contains infinity or a value too large for dtype('float64').
+2025-09-22 11:13:42 [INFO] filter_analysis_prod: Operation completed in 0.01 minutes

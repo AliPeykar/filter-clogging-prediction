@@ -1,0 +1,4 @@
+metric,value
+quadratic_weighted_kappa,0.422490129183118
+level_mae,0.5971264367816091
+within_one_accuracy,1.0

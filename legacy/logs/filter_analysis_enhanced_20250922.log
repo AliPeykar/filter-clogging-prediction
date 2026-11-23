@@ -1,0 +1,82 @@
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: ENHANCED Production Filter Analysis System initialized
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: ✓ Visualizations enabled
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: ✓ SHAP explainability enabled
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: ✓ Advanced hyperparameter optimization enabled
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Starting ENHANCED system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Options: Optimization=True, SHAP=True, Visualizations=True
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Loaded 11519 samples with 9 columns
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Using existing filter_status labels
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Binary target distribution: [8942 2577]
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Multiclass target distribution: [4594 4348 2577]
+2025-09-22 17:01:49 [INFO] filter_analysis_enhanced: Creating data overview visualizations...
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Data overview saved to visualizations\data_overview.png
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Temporal split: train ends at 9215, test starts at 9216
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Split: train=9215, test=2304
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Fitting production feature engineer
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Feature engineering fitted with 114 features
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Available sensors: ['flowrate', 'dp', 'adaptive_cusum', 'short_ema', 'long_ema', 'cusum_threshold', 'validation_score']
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Generated 114 features
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Starting ENHANCED production model training
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Binary classes: {np.int64(0): np.int64(8942), np.int64(1): np.int64(273)}
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Multi classes: {np.int64(0): np.int64(4594), np.int64(1): np.int64(4348), np.int64(2): np.int64(273)}
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Binary class distribution: {np.int64(0): np.int64(8942), np.int64(1): np.int64(273)}
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Training RandomForest (optimization=ON)
+2025-09-22 17:01:51 [INFO] filter_analysis_enhanced: Starting hyperparameter optimization for random_forest with 50 trials
+2025-09-22 17:02:38 [INFO] filter_analysis_enhanced: Optimization completed. Best score: 1.0000
+2025-09-22 17:02:38 [INFO] filter_analysis_enhanced: Best parameters: {'n_estimators': 106, 'max_depth': 15, 'min_samples_split': 15, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+2025-09-22 17:02:39 [INFO] filter_analysis_enhanced: Optimization plots saved to visualizations\hyperparameter_optimization.png
+2025-09-22 17:02:39 [INFO] filter_analysis_enhanced: Optimization completed for RandomForest: 1.0000
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Model performance plots saved to visualizations\model_performance.png
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Feature importance plot saved to visualizations\feature_importance.png
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: SHAP explainer initialized successfully
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Calculating SHAP values...
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: SHAP summary plot saved to visualizations\shap\shap_summary.png
+2025-09-22 17:02:40 [ERROR] filter_analysis_enhanced: Failed to create SHAP feature importance: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-09-22 17:02:40 [ERROR] filter_analysis_enhanced: Failed to create SHAP waterfall plots: The waterfall plot can currently only plot a single explanation, but a matrix of explanations (shape (114, 2)) was passed! Perhaps try `shap.plots.waterfall(shap_values[0])` or for multi-output models, try `shap.plots.waterfall(shap_values[0, 0])`.
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: SHAP explanations generated successfully
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Binary RandomForest: F1=1.000, AUC=nan
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Training LogisticRegression (optimization=ON)
+2025-09-22 17:02:40 [INFO] filter_analysis_enhanced: Starting hyperparameter optimization for logistic_regression with 50 trials
+2025-09-22 17:04:41 [INFO] filter_analysis_enhanced: Optimization completed. Best score: 0.9964
+2025-09-22 17:04:41 [INFO] filter_analysis_enhanced: Best parameters: {'C': 3.7516557872851513, 'penalty': 'l1', 'solver': 'liblinear'}
+2025-09-22 17:04:42 [INFO] filter_analysis_enhanced: Optimization plots saved to visualizations\hyperparameter_optimization.png
+2025-09-22 17:04:42 [INFO] filter_analysis_enhanced: Optimization completed for LogisticRegression: 0.9964
+2025-09-22 17:04:42 [INFO] filter_analysis_enhanced: Binary LogisticRegression: F1=0.977, AUC=nan
+2025-09-22 17:04:42 [INFO] filter_analysis_enhanced: Training XGBoost (optimization=ON)
+2025-09-22 17:04:42 [INFO] filter_analysis_enhanced: Starting hyperparameter optimization for xgboost with 50 trials
+2025-09-22 17:04:59 [INFO] filter_analysis_enhanced: Optimization completed. Best score: 1.0000
+2025-09-22 17:04:59 [INFO] filter_analysis_enhanced: Best parameters: {'n_estimators': 106, 'max_depth': 10, 'learning_rate': 0.22227824312530747, 'subsample': 0.8394633936788146, 'colsample_bytree': 0.6624074561769746, 'min_child_weight': 2, 'reg_alpha': 0.05808361216819946, 'reg_lambda': 0.8661761457749352}
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Optimization plots saved to visualizations\hyperparameter_optimization.png
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Optimization completed for XGBoost: 1.0000
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Binary XGBoost: F1=1.000, AUC=nan
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Best binary model: RandomForest with F1=1.000
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Multiclass distribution: {np.int64(0): np.int64(4594), np.int64(1): np.int64(4348), np.int64(2): np.int64(273)}
+2025-09-22 17:05:00 [INFO] filter_analysis_enhanced: Multiclass: F1=1.000
+2025-09-22 20:52:10 [INFO] filter_analysis_enhanced: Enhanced Production Filter Analysis System initialized
+2025-09-22 20:52:10 [INFO] filter_analysis_enhanced: Starting enhanced system training on Comprehensive_Filter_Analysis.xlsx
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Loaded 11519 samples with 9 columns
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Available columns: ['time', 'flowrate', 'dp', 'short_ema', 'long_ema', 'adaptive_cusum', 'cusum_threshold', 'validation_score', 'filter_status']
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Found status column: filter_status
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Status value distribution:
+filter_status
+Not Clogged    8942
+Clogged        2577
+Name: count, dtype: int64
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Multiclass distribution: {0: np.int64(0), 1: np.int64(0), 2: np.int64(0), 3: np.int64(10367), 4: np.int64(576), 5: np.int64(576)}
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Successfully used existing labels
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Binary target distribution: {0: np.int64(0), 1: np.int64(11519)}
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Multiclass target distribution: {0: np.int64(0), 1: np.int64(0), 2: np.int64(0), 3: np.int64(10367), 4: np.int64(576), 5: np.int64(576)}
+2025-09-22 20:52:11 [INFO] filter_analysis_enhanced: Creating data overview visualizations...
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Data overview saved to visualizations\data_overview.png
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Temporal split: train=9215, test=2304
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Fitting production feature engineer
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Feature engineering fitted with 73 features
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Generated 73 features
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Starting enhanced model training
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Binary classes: 1
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Multi classes: 1
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Enhanced system saved to models\enhanced_system_20250922_205212
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Enhanced training report saved to reports\enhanced_training_report_20250922_205212.txt
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Enhanced system training completed successfully
+2025-09-22 20:52:12 [INFO] filter_analysis_enhanced: Operation completed in 0.04 minutes

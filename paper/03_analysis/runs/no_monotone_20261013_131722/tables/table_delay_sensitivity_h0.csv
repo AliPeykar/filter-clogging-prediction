@@ -1,0 +1,7 @@
+threshold_rule,threshold,consecutive,onset_row_in_window,alarm_decision_row_in_window,delay_rows,consecutive_rule,alarm_convention,cleared_alarm_episodes_before_onset,n_events,note,delay_minutes
+max_f1,0.9317280644660295,1,1082,480,-602,1,delay measured at the k-th confirmation row,4,1,single onset event: no CI on delay; see sensitivity table,-36.06
+max_f1,0.9317280644660295,3,1082,484,-598,3,delay measured at the k-th confirmation row,3,1,single onset event: no CI on delay; see sensitivity table,-35.82
+max_f1,0.9317280644660295,5,1082,486,-596,5,delay measured at the k-th confirmation row,3,1,single onset event: no CI on delay; see sensitivity table,-35.7
+fpr_1pct,4.652440048950133e-05,1,1082,58,-1024,1,delay measured at the k-th confirmation row,9,1,single onset event: no CI on delay; see sensitivity table,-61.34
+fpr_1pct,4.652440048950133e-05,3,1082,60,-1022,3,delay measured at the k-th confirmation row,5,1,single onset event: no CI on delay; see sensitivity table,-61.22
+fpr_1pct,4.652440048950133e-05,5,1082,74,-1008,5,delay measured at the k-th confirmation row,4,1,single onset event: no CI on delay; see sensitivity table,-60.38

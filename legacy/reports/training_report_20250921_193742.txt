@@ -1,0 +1,79 @@
+
+PRODUCTION FILTER ANALYSIS SYSTEM - TRAINING REPORT
+==================================================
+Generated: 2025-09-21 19:37:42
+
+SYSTEM CONFIGURATION
+-------------------
+Required Sensors: ['flowrate', 'dp', 'adaptive_cusum']
+Optional Sensors: ['short_ema', 'long_ema', 'cusum_threshold']
+Domain Thresholds:
+  - Max Pressure Drop: 50.0
+  - Min Flow Rate: 2.0
+  - Clogging Resistance Ratio: 3.0
+
+DATA SUMMARY
+-----------
+Total Samples: 2,000
+Training Set: 1,600
+Test Set: 400
+Features Generated: 68
+
+MODEL PERFORMANCE
+================
+
+BINARY_RANDOMFOREST:
+  - accuracy: 1.000
+  - balanced_accuracy: 1.000
+  - precision: 1.000
+  - recall: 1.000
+  - f1_score: 1.000
+  - training_time: 0.090
+  - auc: nan
+
+BINARY_LOGISTICREGRESSION:
+  - accuracy: 0.998
+  - balanced_accuracy: 0.998
+  - precision: 1.000
+  - recall: 0.998
+  - f1_score: 0.999
+  - training_time: 0.011
+  - auc: nan
+
+BINARY_XGBOOST:
+  - accuracy: 1.000
+  - balanced_accuracy: 1.000
+  - precision: 1.000
+  - recall: 1.000
+  - f1_score: 1.000
+  - training_time: 0.031
+  - auc: nan
+
+MULTICLASS:
+  - accuracy: 1.000
+  - balanced_accuracy: 1.000
+  - f1_score: 1.000
+
+ANOMALY:
+  - accuracy: 1.000
+  - f1_score: 1.000
+
+
+PRODUCTION READINESS
+===================
+✓ Domain-based target creation (no arbitrary thresholds)
+✓ Temporal splitting prevents data leakage
+✓ Fail-fast error handling for missing sensors
+✓ Resource monitoring and enforcement
+✓ Real-time prediction with temporal buffers
+✓ Comprehensive input validation
+✓ Production logging and monitoring
+
+DEPLOYMENT NOTES
+===============
+- System requires ['flowrate', 'dp', 'adaptive_cusum'] sensors for operation
+- Predictions fail fast if critical sensors missing
+- Resource limits: 2.0GB memory, 10min computation
+- Model version: 1.0.0
+
+The system is ready for production deployment.

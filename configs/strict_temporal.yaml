@@ -1,0 +1,12 @@
+# SECONDARY split S1: strict temporal (train on past, test on future only).
+# With a single lifecycle the test window is one-class (all clogged); only
+# sustained-detection recall / probability trajectories are meaningful.
+# Included to demonstrate why the legacy 80/20 temporal evaluation degenerated.
+name: strict_temporal
+feature_set: leakage_free
+split:
+  scheme: strict_temporal
+horizons: [0]
+run_risk_levels: false
+run_shap: false
+run_figures: true

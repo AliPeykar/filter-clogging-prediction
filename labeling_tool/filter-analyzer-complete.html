@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Filter Clogging Analyzer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --background-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #23182c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background-gradient);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #fff, #a8e6cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .methodology-panel {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(46, 204, 113, 0.1));
+            border-left: 4px solid var(--success-color);
+        }
+
+        .methodology h3 {
+            color: var(--success-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .methodology-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--success-color);
+        }
+
+        .upload-zone {
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--success-color);
+            background: rgba(39, 174, 96, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-zone.dragover {
+            border-color: var(--success-color);
+            background: rgba(39, 174, 96, 0.2);
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--secondary-color), #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn.btn-success {
+            background: linear-gradient(45deg, var(--success-color), #229954);
+        }
+
+        .btn.btn-warning {
+            background: linear-gradient(45deg, var(--warning-color), #e67e22);
+        }
+
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color), #58d68d);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--success-color));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #fff, #a8e6cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-container {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            height: 400px;
+            position: relative;
+        }
+
+        .chart-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .controls-panel {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(41, 128, 185, 0.1));
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .control-group {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .control-group input, .control-group select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .control-group input:focus, .control-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+        }
+
+        .control-group select option {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .results-table {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .clogged {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .not-clogged {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .criteria-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .criteria-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--warning-color);
+        }
+
+        .criteria-item h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid transparent;
+        }
+
+        .alert-success {
+            background: rgba(39, 174, 96, 0.2);
+            border-color: var(--success-color);
+            color: #a8e6cf;
+        }
+
+        .alert-warning {
+            background: rgba(243, 156, 18, 0.2);
+            border-color: var(--warning-color);
+            color: #f7dc6f;
+        }
+
+        .alert-error {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: var(--accent-color);
+            color: #f1948a;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header fade-in">
+            <h1>🔬 Comprehensive Filter Clogging Analyzer</h1>
+            <div class="subtitle">Advanced Multi-Criteria Detection System | Scenario 3: Maximum Sensitivity</div>
+        </div>
+
+        <!-- Methodology Panel -->
+        <div class="glass-panel methodology-panel fade-in">
+            <div class="methodology">
+                <h3>🧠 Advanced Analysis Methodology</h3>
+                <p><strong>Comprehensive Multi-Signal Detection:</strong> Uses 7 different criteria with weighted scoring to detect various clogging patterns with maximum sensitivity while maintaining accuracy.</p>
+                
+                <div class="methodology-grid">
+                    <div class="methodology-item">
+                        <h4>🎯 CUSUM Analysis</h4>
+                        <p>Adaptive CUSUM with dynamic thresholds. Moderate (2pts) and Strong (4pts) detection levels.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h4>📈 EMA Divergence</h4>
+                        <p>Exponential Moving Average analysis. Moderate (2pts) and Strong (4pts) trend detection.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h4>📊 DP Elevation</h4>
+                        <p>Multi-level pressure thresholds. High (2pts) and Very High (3pts) elevation detection.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h4>⏰ Time Validation</h4>
+                        <p>Time-based gating. Early detection (1pt) and Expected time (2pts) validation.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h4>📈 Rate Analysis</h4>
+                        <p>Pressure increase rate monitoring. Moderate (2pts) and Strong (3pts) rate changes.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h4>🔄 Sustained Patterns</h4>
+                        <p>Long-term elevation tracking (2pts) and trend persistence analysis (2pts).</p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-success">
+                    <strong>Scoring System:</strong> Requires ≥12 points out of 20 total for "Clogged" classification. Multiple signal combinations provide robust detection with reduced false positives.
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="glass-panel fade-in">
+            <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                <span class="upload-icon">📁</span>
+                <h3>Upload Your Excel File</h3>
+                <p>Click here or drag and drop your Excel file (Bringer.xlsx)</p>
+                <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
+                    Expected columns: time, flowrate, dp<br>
+                    Comprehensive analysis with 7 detection criteria
+                </p>
+                <input type="file" id="fileInput" class="file-input" accept=".xlsx,.xls" onchange="handleFileSelect(event)">
+            </div>
+        </div>
+
+        <!-- Advanced Controls -->
+        <div class="glass-panel controls-panel fade-in">
+            <h3>⚙️ Advanced Configuration</h3>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label>Score Threshold (out of 20)</label>
+                    <input type="range" id="scoreThreshold" min="8" max="18" value="12" oninput="updateThreshold(this.value)">
+                    <span id="thresholdValue">12</span>
+                </div>
+                <div class="control-group">
+                    <label>CUSUM Sensitivity</label>
+                    <select id="cusumSensitivity">
+                        <option value="conservative">Conservative</option>
+                        <option value="moderate" selected>Moderate</option>
+                        <option value="aggressive">Aggressive</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Time Threshold (seconds)</label>
+                    <input type="number" id="timeThreshold" value="7500" min="0" max="15000" step="100">
+                </div>
+                <div class="control-group">
+                    <label>EMA Short Period</label>
+                    <input type="number" id="emaShort" value="50" min="10" max="100" step="5">
+                </div>
+                <div class="control-group">
+                    <label>EMA Long Period</label>
+                    <input type="number" id="emaLong" value="200" min="100" max="500" step="10">
+                </div>
+                <div class="control-group">
+                    <label>Baseline Fraction</label>
+                    <input type="range" id="baselineFraction" min="0.1" max="0.5" step="0.05" value="0.2" oninput="updateBaseline(this.value)">
+                    <span id="baselineValue">20%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Panel -->
+        <div class="glass-panel fade-in">
+            <h3>📊 Analysis Status</h3>
+            <div id="status">Ready to analyze data... Please upload your Excel file.</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="text-center fade-in">
+            <button class="btn" onclick="analyzeData()" id="analyzeBtn" disabled>
+                🚀 Start Comprehensive Analysis
+            </button>
+            <button class="btn btn-success" onclick="downloadResults()" id="downloadBtn" disabled>
+                📊 Download Classified Data
+            </button>
+            <button class="btn btn-warning" onclick="exportReport()" id="reportBtn" disabled>
+                📋 Export Analysis Report
+            </button>
+        </div>
+
+        <!-- Results Statistics -->
+        <div id="resultsSection" style="display: none;">
+            <div class="glass-panel fade-in">
+                <h3>📈 Analysis Results</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalPoints">-</div>
+                        <div class="stat-label">Total Data Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value clogged" id="cloggedPoints">-</div>
+                        <div class="stat-label">Clogged Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value not-clogged" id="notCloggedPoints">-</div>
+                        <div class="stat-label">Not Clogged Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="cloggingTime">-</div>
+                        <div class="stat-label">Clogging Start Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="maxScore">-</div>
+                        <div class="stat-label">Maximum Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avgScore">-</div>
+                        <div class="stat-label">Average Score</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Charts -->
+            <div class="glass-panel fade-in">
+                <h3>📊 Interactive Visualization</h3>
+                <div class="chart-tabs">
+                    <button class="tab-btn active" data-chart="overview">Overview</button>
+                    <button class="tab-btn" data-chart="cusum">CUSUM Analysis</button>
+                    <button class="tab-btn" data-chart="ema">EMA Trends</button>
+                    <button class="tab-btn" data-chart="scores">Validation Scores</button>
+                    <button class="tab-btn" data-chart="criteria">Criteria Breakdown</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="analysisChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Criteria Breakdown -->
+            <div class="glass-panel fade-in">
+                <h3>🔍 Detection Criteria Analysis</h3>
+                <div id="criteriaBreakdown"></div>
+            </div>
+
+            <!-- Sample Data Table -->
+            <div class="glass-panel results-table fade-in">
+                <h3>📋 Sample Data (Around Clogging Transition)</h3>
+                <div class="table-container">
+                    <div id="sampleTable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let uploadedData = null;
+        let processedData = null;
+        let analysisResults = null;
+        let currentChart = null;
+        let currentChartType = 'overview';
+
+        // Configuration object
+        const config = {
+            scoreThreshold: 12,
+            cusumSensitivity: 'moderate',
+            timeThreshold: 7500,
+            emaShort: 50,
+            emaLong: 200,
+            baselineFraction: 0.2
+        };
+
+        // Initialize event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+        });
+
+        function initializeEventListeners() {
+            // Handle drag and drop
+            const uploadZone = document.getElementById('uploadZone');
+            
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+            
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.classList.remove('dragover');
+            });
+            
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
+            });
+
+            // Chart tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const chartType = this.getAttribute('data-chart');
+                    showChart(chartType);
+                    
+                    // Update active tab
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Configuration controls
+            document.getElementById('cusumSensitivity').addEventListener('change', function() {
+                config.cusumSensitivity = this.value;
+            });
+
+            document.getElementById('timeThreshold').addEventListener('change', function() {
+                config.timeThreshold = parseInt(this.value);
+            });
+
+            document.getElementById('emaShort').addEventListener('change', function() {
+                config.emaShort = parseInt(this.value);
+            });
+
+            document.getElementById('emaLong').addEventListener('change', function() {
+                config.emaLong = parseInt(this.value);
+            });
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        }
+
+        function handleFile(file) {
+            const statusDiv = document.getElementById('status');
+            
+            if (!file.name.toLowerCase().includes('.xlsx') && !file.name.toLowerCase().includes('.xls')) {
+                statusDiv.innerHTML = '<div class="alert alert-error">❌ Please upload an Excel file (.xlsx or .xls)</div>';
+                return;
+            }
+            
+            statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Reading Excel file...</div>';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                    uploadedData = XLSX.utils.sheet_to_json(worksheet);
+                    
+                    // Validate data structure
+                    validateFileStructure(uploadedData);
+                    
+                    statusDiv.innerHTML = `<div class="alert alert-success">✅ File loaded successfully! Found ${uploadedData.length.toLocaleString()} data points</div>`;
+                    document.getElementById('analyzeBtn').disabled = false;
+                    
+                } catch (error) {
+                    statusDiv.innerHTML = `<div class="alert alert-error">❌ Error reading file: ${error.message}</div>`;
+                }
+            };
+            
+            reader.onerror = function() {
+                statusDiv.innerHTML = '<div class="alert alert-error">❌ Error reading file</div>';
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+
+        function validateFileStructure(data) {
+            if (!Array.isArray(data) || data.length === 0) {
+                throw new Error('Invalid or empty data structure');
+            }
+
+            const firstRow = data[0];
+            const requiredColumns = ['time', 'flowrate', 'dp'];
+            
+            for (const col of requiredColumns) {
+                if (!(col in firstRow)) {
+                    throw new Error(`Missing required column: ${col}`);
+                }
+                
+                if (typeof firstRow[col] !== 'number') {
+                    throw new Error(`Column ${col} must contain numeric values`);
+                }
+            }
+
+            // Check for reasonable data ranges
+            const timeValues = data.map(row => row.time);
+            const dpValues = data.map(row => row.dp);
+            
+            if (Math.min(...timeValues) < 0) {
+                throw new Error('Time values must be non-negative');
+            }
+            
+            if (Math.min(...dpValues) < 0) {
+                throw new Error('DP values must be non-negative');
+            }
+
+            if (data.length < 100) {
+                throw new Error('Dataset too small for reliable analysis (minimum 100 points required)');
+            }
+
+            return true;
+        }
+
+        // Configuration update functions
+        function updateThreshold(value) {
+            config.scoreThreshold = parseInt(value);
+            document.getElementById('thresholdValue').textContent = value;
+        }
+
+        function updateBaseline(value) {
+            config.baselineFraction = parseFloat(value);
+            document.getElementById('baselineValue').textContent = Math.round(value * 100) + '%';
+        }
+
+        // Main analysis function
+        async function analyzeData() {
+            if (!uploadedData) {
+                alert('Please upload a file first');
+                return;
+            }
+            
+            const statusDiv = document.getElementById('status');
+            const progressBar = document.getElementById('progress');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            
+            analyzeBtn.disabled = true;
+            
+            try {
+                // Update configuration from UI
+                config.cusumSensitivity = document.getElementById('cusumSensitivity').value;
+                config.timeThreshold = parseInt(document.getElementById('timeThreshold').value);
+                config.emaShort = parseInt(document.getElementById('emaShort').value);
+                config.emaLong = parseInt(document.getElementById('emaLong').value);
+
+                // Step 1: Baseline establishment
+                progressBar.style.width = '10%';
+                statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Establishing robust baseline...</div>';
+                await sleep(100);
+                
+                const baselineSize = Math.floor(uploadedData.length * config.baselineFraction);
+                const baselineData = uploadedData.slice(0, baselineSize).map(row => row.dp);
+                
+                // IQR outlier removal
+                const sortedBaseline = [...baselineData].sort((a, b) => a - b);
+                const q1 = sortedBaseline[Math.floor(sortedBaseline.length * 0.25)];
+                const q3 = sortedBaseline[Math.floor(sortedBaseline.length * 0.75)];
+                const iqr = q3 - q1;
+                const lowerBound = q1 - 1.5 * iqr;
+                const upperBound = q3 + 1.5 * iqr;
+                
+                const cleanBaseline = baselineData.filter(dp => dp >= lowerBound && dp <= upperBound);
+                const baselineDP = cleanBaseline.reduce((sum, dp) => sum + dp, 0) / cleanBaseline.length;
+                const baselineStd = Math.sqrt(
+                    cleanBaseline.reduce((sum, dp) => sum + Math.pow(dp - baselineDP, 2), 0) / cleanBaseline.length
+                );
+
+                // Step 2: EMA calculation
+                progressBar.style.width = '25%';
+                statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Computing exponential moving averages...</div>';
+                await sleep(100);
+
+                const shortAlpha = 2 / (config.emaShort + 1);
+                const longAlpha = 2 / (config.emaLong + 1);
+                
+                const shortEMA = [];
+                const longEMA = [];
+                
+                shortEMA[0] = uploadedData[0].dp;
+                longEMA[0] = uploadedData[0].dp;
+                
+                for (let i = 1; i < uploadedData.length; i++) {
+                    shortEMA[i] = shortAlpha * uploadedData[i].dp + (1 - shortAlpha) * shortEMA[i - 1];
+                    longEMA[i] = longAlpha * uploadedData[i].dp + (1 - longAlpha) * longEMA[i - 1];
+                }
+
+                // Step 3: Adaptive CUSUM
+                progressBar.style.width = '45%';
+                statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Applying adaptive CUSUM analysis...</div>';
+                await sleep(100);
+
+                const cusumResults = computeAdaptiveCUSUM(uploadedData, baselineDP, baselineStd, shortEMA, longEMA);
+
+                // Step 4: Comprehensive multi-criteria validation
+                progressBar.style.width = '70%';
+                statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Performing comprehensive multi-criteria validation...</div>';
+                await sleep(100);
+
+                const validationResults = performComprehensiveValidation(
+                    uploadedData, cusumResults, shortEMA, longEMA, baselineDP, baselineStd
+                );
+
+                // Step 5: Final classification
+                progressBar.style.width = '90%';
+                statusDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Finalizing comprehensive classification...</div>';
+                await sleep(100);
+
+                // Create processed dataset
+                processedData = uploadedData.map((row, index) => {
+                    const validation = validationResults.validationResults[index];
+                    
+                    return {
+                        time: row.time,
+                        flowrate: row.flowrate,
+                        dp: row.dp,
+                        shortEMA: parseFloat(shortEMA[index].toFixed(3)),
+                        longEMA: parseFloat(longEMA[index].toFixed(3)),
+                        adaptiveCusum: parseFloat(cusumResults.cusum[index].toFixed(3)),
+                        cusumThreshold: parseFloat(cusumResults.thresholds[index].toFixed(3)),
+                        validationScore: validation.score,
+                        filterStatus: validation.isClogged ? 'Clogged' : 'Not Clogged',
+                        criteriaDetails: validation
+                    };
+                });
+
+                // Calculate comprehensive results
+                const cloggedCount = processedData.filter(row => row.filterStatus === 'Clogged').length;
+                const notCloggedCount = processedData.length - cloggedCount;
+                const cloggingStartIndex = validationResults.sustainedCloggingStart;
+                const maxScore = Math.max(...processedData.map(row => row.validationScore));
+                const avgScore = processedData.reduce((sum, row) => sum + row.validationScore, 0) / processedData.length;
+
+                analysisResults = {
+                    totalPoints: processedData.length,
+                    cloggedCount: cloggedCount,
+                    notCloggedCount: notCloggedCount,
+                    cloggedPercentage: (cloggedCount / processedData.length) * 100,
+                    cloggingStartIndex: cloggingStartIndex,
+                    cloggingStartTime: cloggingStartIndex >= 0 ? processedData[cloggingStartIndex].time : null,
+                    maxScore: maxScore,
+                    avgScore: avgScore,
+                    baselineStats: { mean: baselineDP, std: baselineStd, size: cleanBaseline.length },
+                    configuration: { ...config },
+                    criteriaStats: calculateCriteriaStats(validationResults.validationResults)
+                };
+
+                progressBar.style.width = '100%';
+                statusDiv.innerHTML = '<div class="alert alert-success">✅ Comprehensive analysis complete!</div>';
+
+                // Display results
+                displayResults();
+                document.getElementById('downloadBtn').disabled = false;
+                document.getElementById('reportBtn').disabled = false;
+
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="alert alert-error">❌ Error: ${error.message}</div>`;
+                analyzeBtn.disabled = false;
+            }
+        }
+
+        function computeAdaptiveCUSUM(data, baselineDP, baselineStd, shortEMA, longEMA) {
+            const n = data.length;
+            const cusum = new Array(n).fill(0);
+            const thresholds = new Array(n).fill(0);
+            const kValues = new Array(n).fill(0);
+            const triggered = new Array(n).fill(false);
+
+            // Sensitivity multipliers based on configuration
+            const sensitivityMultipliers = {
+                conservative: { k: 0.8, h: 5.0 },
+                moderate: { k: 0.5, h: 4.0 },
+                aggressive: { k: 0.3, h: 3.0 }
+            };
+
+            const multiplier = sensitivityMultipliers[config.cusumSensitivity];
+
+            for (let i = 0; i < n; i++) {
+                // Dynamic parameters
+                const localWindow = Math.max(50, Math.min(200, Math.floor(n * 0.05)));
+                const windowStart = Math.max(0, i - localWindow);
+                const localData = data.slice(windowStart, i + 1).map(row => row.dp);
+
+                let k, h;
+                if (localData.length > 10) {
+                    const localMean = localData.reduce((sum, dp) => sum + dp, 0) / localData.length;
+                    const localStd = Math.sqrt(
+                        localData.reduce((sum, dp) => sum + Math.pow(dp - localMean, 2), 0) / localData.length
+                    );
+                    k = Math.max(multiplier.k * localStd, 0.05);
+                    h = Math.max(multiplier.h * localStd, 2 * baselineStd, 0.5);
+                } else {
+                    k = multiplier.k * baselineStd;
+                    h = multiplier.h * baselineStd;
+                }
+
+                kValues[i] = k;
+                thresholds[i] = h;
+
+                // Combined deviation calculation
+                const emaDeviation = shortEMA[i] - longEMA[i];
+                const dpDeviation = data[i].dp - baselineDP;
+                const combinedDeviation = 0.7 * dpDeviation + 0.3 * emaDeviation;
+
+                // CUSUM calculation
+                if (i === 0) {
+                    cusum[i] = Math.max(0, combinedDeviation - k);
+                } else {
+                    cusum[i] = Math.max(0, cusum[i - 1] + combinedDeviation - k);
+                }
+
+                triggered[i] = cusum[i] > h;
+            }
+
+            return { cusum, thresholds, kValues, triggered };
+        }
+
+        function performComprehensiveValidation(data, cusumResults, shortEMA, longEMA, baselineDP, baselineStd) {
+            const n = data.length;
+            const validationResults = [];
+            let sustainedCloggingStart = -1;
+
+            // Enhanced thresholds
+            const moderateCusumMult = 1.2;
+            const strongCusumMult = 2.0;
+            const moderateEmaThreshold = 2 * baselineStd;
+            const strongEmaThreshold = 4 * baselineStd;
+            const highElevationThreshold = baselineDP + 3 * baselineStd;
+            const veryHighElevationThreshold = baselineDP + 5 * baselineStd;
+
+            for (let i = 0; i < n; i++) {
+                const dp = data[i].dp;
+                const timeVal = data[i].time;
+
+                // Criteria 1: CUSUM levels (2-4 points)
+                const cusumModerate = cusumResults.triggered[i] && 
+                    cusumResults.cusum[i] > cusumResults.thresholds[i] * moderateCusumMult;
+                const cusumStrong = cusumResults.triggered[i] && 
+                    cusumResults.cusum[i] > cusumResults.thresholds[i] * strongCusumMult;
+
+                // Criteria 2: EMA divergence levels (2-4 points)
+                const emaModerate = shortEMA[i] > longEMA[i] && 
+                    (shortEMA[i] - longEMA[i]) > moderateEmaThreshold;
+                const emaStrong = shortEMA[i] > longEMA[i] && 
+                    (shortEMA[i] - longEMA[i]) > strongEmaThreshold;
+
+                // Criteria 3: DP elevation levels (2-3 points)
+                const highElevation = dp > highElevationThreshold;
+                const veryHighElevation = dp > veryHighElevationThreshold;
+
+                // Criteria 4: Time validation (1-2 points)
+                const timeEarly = timeVal > config.timeThreshold - 500;
+                const timeExpected = timeVal > config.timeThreshold;
+
+                // Criteria 5: Rate increase (2-3 points)
+                let moderateRateIncrease = false;
+                let strongRateIncrease = false;
+                if (i >= 30) {
+                    const oldAvg = data.slice(i - 30, i - 15).reduce((sum, row) => sum + row.dp, 0) / 15;
+                    const recentAvg = data.slice(i - 15, i + 1).reduce((sum, row) => sum + row.dp, 0) / 16;
+                    if (oldAvg > 0) {
+                        const rateRatio = recentAvg / oldAvg;
+                        moderateRateIncrease = rateRatio > 1.2;
+                        strongRateIncrease = rateRatio > 1.4;
+                    }
+                }
+
+                // Criteria 6: Sustained elevation (2 points)
+                let sustainedElevation = false;
+                if (i >= 20) {
+                    const recentWindow = data.slice(i - 20, i + 1).map(row => row.dp);
+                    const elevatedCount = recentWindow.filter(dp => dp > baselineDP + 2 * baselineStd).length;
+                    sustainedElevation = elevatedCount >= 15;
+                }
+
+                // Criteria 7: Trend persistence (2 points)
+                let trendPersistence = false;
+                if (i < n - 30) {
+                    const futureWindow = data.slice(i, i + 30).map(row => row.dp);
+                    const currentAvg = data.slice(Math.max(0, i - 10), i + 1).reduce((sum, row) => sum + row.dp, 0) / Math.min(11, i + 1);
+                    const futureAvg = futureWindow.reduce((sum, dp) => sum + dp, 0) / futureWindow.length;
+                    trendPersistence = futureAvg > currentAvg * 1.15;
+                }
+
+                // Comprehensive scoring
+                let score = 0;
+                if (cusumStrong) score += 4;
+                else if (cusumModerate) score += 2;
+
+                if (emaStrong) score += 4;
+                else if (emaModerate) score += 2;
+
+                if (veryHighElevation) score += 3;
+                else if (highElevation) score += 2;
+
+                if (timeExpected) score += 2;
+                else if (timeEarly) score += 1;
+
+                if (strongRateIncrease) score += 3;
+                else if (moderateRateIncrease) score += 2;
+
+                if (sustainedElevation) score += 2;
+                if (trendPersistence) score += 2;
+
+                const isClogged = score >= config.scoreThreshold;
+
+                if (isClogged && sustainedCloggingStart === -1) {
+                    sustainedCloggingStart = i;
+                }
+
+                validationResults.push({
+                    isClogged,
+                    score,
+                    cusumModerate,
+                    cusumStrong,
+                    emaModerate,
+                    emaStrong,
+                    highElevation,
+                    veryHighElevation,
+                    timeEarly,
+                    timeExpected,
+                    moderateRateIncrease,
+                    strongRateIncrease,
+                    sustainedElevation,
+                    trendPersistence
+                });
+            }
+
+            return { validationResults, sustainedCloggingStart };
+        }
+
+        function calculateCriteriaStats(validationResults) {
+            return {
+                cusumTriggers: validationResults.filter(r => r.cusumModerate || r.cusumStrong).length,
+                emaDivergences: validationResults.filter(r => r.emaModerate || r.emaStrong).length,
+                highElevations: validationResults.filter(r => r.highElevation || r.veryHighElevation).length,
+                rateIncreases: validationResults.filter(r => r.moderateRateIncrease || r.strongRateIncrease).length,
+                sustainedElevations: validationResults.filter(r => r.sustainedElevation).length,
+                trendPersistence: validationResults.filter(r => r.trendPersistence).length
+            };
+        }
+
+        function displayResults() {
+            document.getElementById('resultsSection').style.display = 'block';
+
+            // Update statistics
+            document.getElementById('totalPoints').textContent = analysisResults.totalPoints.toLocaleString();
+            document.getElementById('cloggedPoints').textContent = 
+                `${analysisResults.cloggedCount.toLocaleString()} (${analysisResults.cloggedPercentage.toFixed(1)}%)`;
+            document.getElementById('notCloggedPoints').textContent = 
+                `${analysisResults.notCloggedCount.toLocaleString()} (${(100 - analysisResults.cloggedPercentage).toFixed(1)}%)`;
+            document.getElementById('cloggingTime').textContent = 
+                analysisResults.cloggingStartTime ? `${analysisResults.cloggingStartTime.toFixed(0)}s` : 'Not detected';
+            document.getElementById('maxScore').textContent = `${analysisResults.maxScore}/20`;
+            document.getElementById('avgScore').textContent = analysisResults.avgScore.toFixed(1);
+
+            // Display criteria breakdown
+            displayCriteriaBreakdown();
+
+            // Display sample table
+            displaySampleTable();
+
+            // Initialize charts
+            setTimeout(() => showChart('overview'), 500);
+
+            // Scroll to results
+            setTimeout(scrollToResults, 1000);
+        }
+
+        function displayCriteriaBreakdown() {
+            const criteriaStats = analysisResults.criteriaStats;
+            const total = analysisResults.totalPoints;
+
+            const criteriaHtml = `
+                <div class="criteria-breakdown">
+                    <div class="criteria-item">
+                        <h4>🎯 CUSUM Triggers</h4>
+                        <p><strong>${criteriaStats.cusumTriggers.toLocaleString()}</strong> points (${(criteriaStats.cusumTriggers/total*100).toFixed(1)}%)</p>
+                        <p>Detects sustained shifts in differential pressure using adaptive cumulative sum algorithm.</p>
+                    </div>
+                    <div class="criteria-item">
+                        <h4>📈 EMA Divergences</h4>
+                        <p><strong>${criteriaStats.emaDivergences.toLocaleString()}</strong> points (${(criteriaStats.emaDivergences/total*100).toFixed(1)}%)</p>
+                        <p>Identifies trend changes through exponential moving average analysis.</p>
+                    </div>
+                    <div class="criteria-item">
+                        <h4>📊 High Elevations</h4>
+                        <p><strong>${criteriaStats.highElevations.toLocaleString()}</strong> points (${(criteriaStats.highElevations/total*100).toFixed(1)}%)</p>
+                        <p>Detects significantly elevated differential pressure levels.</p>
+                    </div>
+                    <div class="criteria-item">
+                        <h4>📈 Rate Increases</h4>
+                        <p><strong>${criteriaStats.rateIncreases.toLocaleString()}</strong> points (${(criteriaStats.rateIncreases/total*100).toFixed(1)}%)</p>
+                        <p>Monitors acceleration in pressure buildup rates.</p>
+                    </div>
+                    <div class="criteria-item">
+                        <h4>🔄 Sustained Elevations</h4>
+                        <p><strong>${criteriaStats.sustainedElevations.toLocaleString()}</strong> points (${(criteriaStats.sustainedElevations/total*100).toFixed(1)}%)</p>
+                        <p>Tracks persistent elevation patterns over time windows.</p>
+                    </div>
+                    <div class="criteria-item">
+                        <h4>🎯 Trend Persistence</h4>
+                        <p><strong>${criteriaStats.trendPersistence.toLocaleString()}</strong> points (${(criteriaStats.trendPersistence/total*100).toFixed(1)}%)</p>
+                        <p>Validates forward-looking trend continuation.</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('criteriaBreakdown').innerHTML = criteriaHtml;
+        }
+
+        function displaySampleTable() {
+            if (analysisResults.cloggingStartIndex < 0) {
+                document.getElementById('sampleTable').innerHTML = '<p>No clogging transition detected in the data.</p>';
+                return;
+            }
+
+            const startSample = Math.max(0, analysisResults.cloggingStartIndex - 10);
+            const endSample = Math.min(processedData.length, analysisResults.cloggingStartIndex + 20);
+
+            let tableHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>DP</th>
+                            <th>Short EMA</th>
+                            <th>CUSUM</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            for (let i = startSample; i < endSample; i++) {
+                const row = processedData[i];
+                const statusClass = row.filterStatus === 'Clogged' ? 'clogged' : 'not-clogged';
+                const highlight = i === analysisResults.cloggingStartIndex ? 'style="background: rgba(255, 255, 255, 0.15);"' : '';
+
+                tableHtml += `
+                    <tr ${highlight}>
+                        <td>${row.time}</td>
+                        <td>${row.dp.toFixed(3)}</td>
+                        <td>${row.shortEMA.toFixed(3)}</td>
+                        <td>${row.adaptiveCusum.toFixed(3)}</td>
+                        <td>${row.validationScore}/20</td>
+                        <td class="${statusClass}">${row.filterStatus}</td>
+                    </tr>
+                `;
+            }
+
+            tableHtml += '</tbody></table>';
+            document.getElementById('sampleTable').innerHTML = tableHtml;
+        }
+
+        function showChart(chartType) {
+            if (!processedData) return;
+            
+            currentChartType = chartType;
+
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            const ctx = document.getElementById('analysisChart').getContext('2d');
+            const timeData = processedData.map(row => row.time);
+
+            switch (chartType) {
+                case 'overview':
+                    createOverviewChart(ctx, timeData);
+                    break;
+                case 'cusum':
+                    createCusumChart(ctx, timeData);
+                    break;
+                case 'ema':
+                    createEmaChart(ctx, timeData);
+                    break;
+                case 'scores':
+                    createScoresChart(ctx, timeData);
+                    break;
+                case 'criteria':
+                    createCriteriaChart(ctx, timeData);
+                    break;
+            }
+        }
+
+        function createOverviewChart(ctx, timeData) {
+            const dpData = processedData.map(row => row.dp);
+            const cloggedData = processedData.map(row => row.filterStatus === 'Clogged' ? row.dp : null);
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        label: 'Differential Pressure',
+                        data: dpData,
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.4)',
+                        borderWidth: 3,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: 'Clogged Periods',
+                        data: cloggedData,
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.5)',
+                        borderWidth: 4,
+                        pointRadius: 0,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Filter Clogging Detection Overview',
+                            color: 'white'
+                        },
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Time (seconds)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Differential Pressure', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createCusumChart(ctx, timeData) {
+            const cusumData = processedData.map(row => row.adaptiveCusum);
+            const thresholdData = processedData.map(row => row.cusumThreshold);
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        label: 'Adaptive CUSUM',
+                        data: cusumData,
+                        borderColor: '#9b59b6',
+                        backgroundColor: 'rgba(155, 89, 182, 0.4)',
+                        borderWidth: 3,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: 'Dynamic Threshold',
+                        data: thresholdData,
+                        borderColor: '#e74c3c',
+                        borderWidth: 3,
+                        borderDash: [8, 4],
+                        fill: false,
+                        pointRadius: 0,
+                        tension: 0.2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Adaptive CUSUM Analysis',
+                            color: 'white'
+                        },
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Time (seconds)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'CUSUM Value', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createEmaChart(ctx, timeData) {
+            const shortEmaData = processedData.map(row => row.shortEMA);
+            const longEmaData = processedData.map(row => row.longEMA);
+            const dpData = processedData.map(row => row.dp);
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        label: 'DP',
+                        data: dpData,
+                        borderColor: '#95a5a6',
+                        backgroundColor: 'rgba(149, 165, 166, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: `Short EMA (${config.emaShort})`,
+                        data: shortEmaData,
+                        borderColor: '#e74c3c',
+                        borderWidth: 3,
+                        fill: false,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: `Long EMA (${config.emaLong})`,
+                        data: longEmaData,
+                        borderColor: '#27ae60',
+                        borderWidth: 3,
+                        fill: false,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Exponential Moving Average Trends',
+                            color: 'white'
+                        },
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Time (seconds)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Value', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createScoresChart(ctx, timeData) {
+            const scoresData = processedData.map(row => row.validationScore);
+            const thresholdLine = new Array(timeData.length).fill(config.scoreThreshold);
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        label: 'Validation Score',
+                        data: scoresData,
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.4)',
+                        borderWidth: 3,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: `Threshold (${config.scoreThreshold})`,
+                        data: thresholdLine,
+                        borderColor: '#e74c3c',
+                        borderWidth: 3,
+                        borderDash: [8, 4],
+                        fill: false,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Multi-Criteria Validation Scores',
+                            color: 'white'
+                        },
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Time (seconds)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Score (out of 20)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            min: 0,
+                            max: 20
+                        }
+                    }
+                }
+            });
+        }
+
+        function createCriteriaChart(ctx, timeData) {
+            // Create stacked area chart showing contribution of each criteria
+            const cusumData = processedData.map(row => {
+                const details = row.criteriaDetails;
+                return (details.cusumStrong ? 4 : (details.cusumModerate ? 2 : 0));
+            });
+            
+            const emaData = processedData.map(row => {
+                const details = row.criteriaDetails;
+                return (details.emaStrong ? 4 : (details.emaModerate ? 2 : 0));
+            });
+            
+            const elevationData = processedData.map(row => {
+                const details = row.criteriaDetails;
+                return (details.veryHighElevation ? 3 : (details.highElevation ? 2 : 0));
+            });
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        label: 'CUSUM Contribution',
+                        data: cusumData,
+                        borderColor: '#9b59b6',
+                        backgroundColor: 'rgba(155, 89, 182, 0.7)',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: 'EMA Contribution',
+                        data: emaData,
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }, {
+                        label: 'Elevation Contribution',
+                        data: elevationData,
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Detection Criteria Contributions',
+                            color: 'white'
+                        },
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Time (seconds)', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Contribution Score', color: 'white' },
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function downloadResults() {
+            if (!processedData) {
+                alert('No data to download. Please run analysis first.');
+                return;
+            }
+
+            try {
+                // Create output data with key columns
+                const outputData = processedData.map(row => ({
+                    time: row.time,
+                    flowrate: row.flowrate,
+                    dp: row.dp,
+                    short_ema: row.shortEMA,
+                    long_ema: row.longEMA,
+                    adaptive_cusum: row.adaptiveCusum,
+                    cusum_threshold: row.cusumThreshold,
+                    validation_score: row.validationScore,
+                    filter_status: row.filterStatus
+                }));
+
+                // Create new workbook
+                const newWorkbook = XLSX.utils.book_new();
+                const newWorksheet = XLSX.utils.json_to_sheet(outputData);
+
+                // Add worksheet to workbook
+                XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, "Comprehensive_Analysis");
+
+                // Generate filename with timestamp
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                const filename = `Comprehensive_Filter_Analysis_${timestamp}.xlsx`;
+
+                // Download file
+                XLSX.writeFile(newWorkbook, filename);
+
+                document.getElementById('status').innerHTML = 
+                    `<div class="alert alert-success">✅ Results downloaded: ${filename}</div>`;
+
+            } catch (error) {
+                document.getElementById('status').innerHTML = 
+                    `<div class="alert alert-error">❌ Error generating Excel file: ${error.message}</div>`;
+            }
+        }
+
+        function exportReport() {
+            if (!analysisResults) {
+                alert('No analysis results found. Please run analysis first.');
+                return;
+            }
+
+            try {
+                // Create comprehensive report data
+                const reportData = [
+                    ['COMPREHENSIVE FILTER CLOGGING ANALYSIS REPORT', ''],
+                    ['Generated:', new Date().toLocaleString()],
+                    ['', ''],
+                    ['ANALYSIS SUMMARY', ''],
+                    ['Total Data Points:', analysisResults.totalPoints.toLocaleString()],
+                    ['Clogged Points:', `${analysisResults.cloggedCount.toLocaleString()} (${analysisResults.cloggedPercentage.toFixed(1)}%)`],
+                    ['Not Clogged Points:', `${analysisResults.notCloggedCount.toLocaleString()} (${(100-analysisResults.cloggedPercentage).toFixed(1)}%)`],
+                    ['Clogging Start Time:', analysisResults.cloggingStartTime ? `${analysisResults.cloggingStartTime.toFixed(0)} seconds` : 'Not detected'],
+                    ['Maximum Score Achieved:', `${analysisResults.maxScore}/20`],
+                    ['Average Score:', analysisResults.avgScore.toFixed(2)],
+                    ['', ''],
+                    ['CONFIGURATION USED', ''],
+                    ['Score Threshold:', `${analysisResults.configuration.scoreThreshold}/20`],
+                    ['CUSUM Sensitivity:', analysisResults.configuration.cusumSensitivity],
+                    ['Time Threshold:', `${analysisResults.configuration.timeThreshold} seconds`],
+                    ['Short EMA Period:', analysisResults.configuration.emaShort],
+                    ['Long EMA Period:', analysisResults.configuration.emaLong],
+                    ['Baseline Fraction:', `${(analysisResults.configuration.baselineFraction * 100).toFixed(1)}%`],
+                    ['', ''],
+                    ['BASELINE STATISTICS', ''],
+                    ['Baseline Mean:', analysisResults.baselineStats.mean.toFixed(6)],
+                    ['Baseline Std Dev:', analysisResults.baselineStats.std.toFixed(6)],
+                    ['Baseline Sample Size:', analysisResults.baselineStats.size],
+                    ['', ''],
+                    ['CRITERIA STATISTICS', ''],
+                    ['CUSUM Triggers:', `${analysisResults.criteriaStats.cusumTriggers.toLocaleString()} (${(analysisResults.criteriaStats.cusumTriggers/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['EMA Divergences:', `${analysisResults.criteriaStats.emaDivergences.toLocaleString()} (${(analysisResults.criteriaStats.emaDivergences/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['High Elevations:', `${analysisResults.criteriaStats.highElevations.toLocaleString()} (${(analysisResults.criteriaStats.highElevations/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['Rate Increases:', `${analysisResults.criteriaStats.rateIncreases.toLocaleString()} (${(analysisResults.criteriaStats.rateIncreases/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['Sustained Elevations:', `${analysisResults.criteriaStats.sustainedElevations.toLocaleString()} (${(analysisResults.criteriaStats.sustainedElevations/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['Trend Persistence:', `${analysisResults.criteriaStats.trendPersistence.toLocaleString()} (${(analysisResults.criteriaStats.trendPersistence/analysisResults.totalPoints*100).toFixed(1)}%)`],
+                    ['', ''],
+                    ['SCORING METHODOLOGY', ''],
+                    ['CUSUM (Moderate/Strong):', '2-4 points'],
+                    ['EMA Divergence (Moderate/Strong):', '2-4 points'],
+                    ['DP Elevation (High/Very High):', '2-3 points'],
+                    ['Time Validation (Early/Expected):', '1-2 points'],
+                    ['Rate Increase (Moderate/Strong):', '2-3 points'],
+                    ['Sustained Elevation:', '2 points'],
+                    ['Trend Persistence:', '2 points'],
+                    ['Total Possible Score:', '20 points'],
+                    ['Required for Clogged Classification:', `≥${analysisResults.configuration.scoreThreshold} points`]
+                ];
+
+                // Create workbook with report
+                const reportWorkbook = XLSX.utils.book_new();
+                const reportWorksheet = XLSX.utils.aoa_to_sheet(reportData);
+
+                // Add detailed data as second sheet
+                const detailedData = processedData.map((row, index) => ({
+                    Index: index + 1,
+                    Time: row.time,
+                    DP: row.dp,
+                    Short_EMA: row.shortEMA,
+                    Long_EMA: row.longEMA,
+                    CUSUM: row.adaptiveCusum,
+                    CUSUM_Threshold: row.cusumThreshold,
+                    Validation_Score: row.validationScore,
+                    Filter_Status: row.filterStatus,
+                    CUSUM_Moderate: row.criteriaDetails.cusumModerate ? 'Yes' : 'No',
+                    CUSUM_Strong: row.criteriaDetails.cusumStrong ? 'Yes' : 'No',
+                    EMA_Moderate: row.criteriaDetails.emaModerate ? 'Yes' : 'No',
+                    EMA_Strong: row.criteriaDetails.emaStrong ? 'Yes' : 'No',
+                    High_Elevation: row.criteriaDetails.highElevation ? 'Yes' : 'No',
+                    Very_High_Elevation: row.criteriaDetails.veryHighElevation ? 'Yes' : 'No',
+                    Time_Early: row.criteriaDetails.timeEarly ? 'Yes' : 'No',
+                    Time_Expected: row.criteriaDetails.timeExpected ? 'Yes' : 'No',
+                    Rate_Moderate: row.criteriaDetails.moderateRateIncrease ? 'Yes' : 'No',
+                    Rate_Strong: row.criteriaDetails.strongRateIncrease ? 'Yes' : 'No',
+                    Sustained_Elevation: row.criteriaDetails.sustainedElevation ? 'Yes' : 'No',
+                    Trend_Persistence: row.criteriaDetails.trendPersistence ? 'Yes' : 'No'
+                }));
+
+                const detailedWorksheet = XLSX.utils.json_to_sheet(detailedData);
+
+                // Add sheets to workbook
+                XLSX.utils.book_append_sheet(reportWorkbook, reportWorksheet, "Analysis_Report");
+                XLSX.utils.book_append_sheet(reportWorkbook, detailedWorksheet, "Detailed_Results");
+
+                // Generate filename with timestamp
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                const filename = `Comprehensive_Analysis_Report_${timestamp}.xlsx`;
+
+                // Download file
+                XLSX.writeFile(reportWorkbook, filename);
+
+                document.getElementById('status').innerHTML = 
+                    `<div class="alert alert-success">✅ Comprehensive report exported: ${filename}</div>`;
+
+            } catch (error) {
+                document.getElementById('status').innerHTML = 
+                    `<div class="alert alert-error">❌ Error generating report: ${error.message}</div>`;
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function scrollToResults() {
+            document.getElementById('resultsSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Initialize console logging
+        console.log('🔬 Comprehensive Filter Clogging Analyzer initialized');
+        console.log('📊 Ready for advanced multi-criteria analysis');
+        console.log('🎯 Configuration:', config);
+    </script>
+</body>
+</html>

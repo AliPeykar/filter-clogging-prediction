@@ -1,0 +1,6 @@
+anticipation_rows,n_excluded,precision,recall,f1,mcc,anticipation_minutes
+0,0,1.0,1.0,1.0,,0.0
+60,0,1.0,1.0,1.0,,3.6
+120,0,1.0,1.0,1.0,,7.2
+300,0,1.0,1.0,1.0,,18.0
+600,0,1.0,1.0,1.0,,35.9

@@ -1,0 +1,10 @@
+name: seed4
+feature_set: leakage_free
+split:
+  scheme: held_out_transition
+horizons: [0]
+seed: 4
+run_risk_levels: false
+run_shap: true
+run_figures: false
+output_root: paper/03_analysis/runs
