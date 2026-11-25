@@ -1,0 +1,11 @@
+name: flow_corrected
+feature_set: leakage_free
+data_path: ../03_analysis/out/data_flow_corrected.xlsx
+split:
+  scheme: held_out_transition
+horizons: [0]
+seed: 42
+run_risk_levels: false
+run_shap: false
+run_figures: false
+output_root: ../03_analysis/runs

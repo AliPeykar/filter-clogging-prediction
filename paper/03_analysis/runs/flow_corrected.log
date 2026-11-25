@@ -1,0 +1,13 @@
+2026-11-25 08:17:13,968 filterclog.data INFO loaded data_flow_corrected.xlsx: 11519 rows x 9 cols
+2026-11-25 08:17:13,985 filterclog.data INFO sampling interval: 3.59 s/row (derived)
+2026-11-25 08:17:13,985 filterclog.target INFO label audit written to G:\paper\07_repository\..\03_analysis\runs\flow_corrected_20261125_081711\label_audit.json
+2026-11-25 08:17:13,995 run_experiment INFO split: {'scheme': 'held_out_transition', 'segments_1based': {'train_a': [1, 7140], 'val_a': [7201, 7800], 'test': [7861, 9600], 'val_b': [9661, 10260], 'train_b': [10321, 11519]}, 'train': {'n': 8339, 'n_pos': 1199, 'n_neg': 7140, 'pos_frac': 0.1438}, 'val': {'n': 1200, 'n_pos': 600, 'n_neg': 600, 'pos_frac': 0.5}, 'test': {'n': 1740, 'n_pos': 658, 'n_neg': 1082, 'pos_frac': 0.3782}, 'n_purged': 240}
+2026-11-25 08:17:41,630 filterclog.hpo INFO HPO best val logloss: 0.27543 (best_iteration=42)
+2026-11-25 08:17:43,580 filterclog.train INFO XGB trained: best_iteration=41 (early stopping), spw=5.90
+2026-11-25 08:17:43,592 filterclog.calibration INFO max-F1 threshold=0.9792 (val F1=1.0000)
+2026-11-25 08:17:43,592 filterclog.calibration INFO FPR<=1.0% threshold=0.0000 (flags 6/600 healthy val rows)
+2026-11-25 08:17:52,897 filterclog.calibration INFO max-F1 threshold=0.9595 (val F1=1.0000)
+2026-11-25 08:18:00,424 filterclog.reporting INFO wrote G:\paper\07_repository\..\03_analysis\runs\flow_corrected_20261125_081711\metrics.json
+2026-11-25 08:18:00,426 filterclog.reporting INFO wrote G:\paper\07_repository\..\03_analysis\runs\flow_corrected_20261125_081711\report.md
+2026-11-25 08:18:03,403 filterclog.reporting INFO summary tables written to G:\paper\07_repository\..\03_analysis\runs\flow_corrected_20261125_081711\tables
+2026-11-25 08:18:03,403 run_experiment INFO run complete: G:\paper\07_repository\..\03_analysis\runs\flow_corrected_20261125_081711

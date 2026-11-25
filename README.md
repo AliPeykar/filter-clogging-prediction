@@ -25,7 +25,7 @@ figures is in this repository.
 | `docs/` | Modification log, verification checklist and physics notes for the corrected pipeline |
 | `legacy/` | The earlier pipeline (reported scores of 1.000), archived unmodified with its reports and plots; trained model files are not included |
 | `paper/01_reproduction/runs/` | Archived outputs of the four configurations as reported in the article |
-| `paper/03_analysis/` | Analysis scripts A1–A7, sensitivity configurations and runs, figure script and their outputs (`out/`) |
+| `paper/03_analysis/` | Analysis scripts A1–A8, sensitivity configurations and runs, figure script and their outputs (`out/`) |
 
 ## Data notes
 

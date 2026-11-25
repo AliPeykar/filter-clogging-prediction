@@ -1,0 +1,11 @@
+name: main_rerun_a8
+feature_set: leakage_free
+data_path: Comprehensive_Filter_Analysis.xlsx
+split:
+  scheme: held_out_transition
+horizons: [0]
+seed: 42
+run_risk_levels: false
+run_shap: false
+run_figures: false
+output_root: ../03_analysis/runs

@@ -1,0 +1,168 @@
+{
+ "data": "Comprehensive_Filter_Analysis.xlsx",
+ "permanent_loss_fraction": 0.98,
+ "assumptions": "P_up = 101.3 kPa + permanent orifice loss + filter dP (losses after the filter section set to zero: lower bound); isothermal 14.85 C; Q_out = flow at 101.3 kPa, proportional to mass flow",
+ "orifice_dp_kPa_median_TrainA_TrainB": [
+  10.43,
+  6.74
+ ],
+ "p_up_kPa_abs_median_TrainA_Test_TrainB": [
+  121.6,
+  131.0,
+  167.0
+ ],
+ "entered_over_actual_density_median_TrainA_TrainB": [
+  1.902,
+  1.505
+ ],
+ "q_out_over_q_log_median_TrainA_Test_TrainB": [
+  1.656,
+  1.718,
+  2.022
+ ],
+ "logged_q_change_at_constant_mass_flow_pct": -18.1,
+ "re_D_median_logged_rho1204_and_recomputed": [
+  3040,
+  5180
+ ],
+ "logged": {
+  "Train-A_min_median": [
+   6.68,
+   6.976
+  ],
+  "Val-A_min_median": [
+   6.792,
+   6.867
+  ],
+  "Test_min_median": [
+   6.167,
+   6.526
+  ],
+  "Val-B_min_median": [
+   5.508,
+   5.675
+  ],
+  "Train-B_min_median": [
+   5.204,
+   5.38
+  ],
+  "median_drop_TrainA_to_TrainB_pct": 22.9,
+  "healthy_train_val_min": 6.68,
+  "test_below_healthy_min_pct_pre_step_mid_post": [
+   0.0,
+   98.2,
+   99.8
+  ],
+  "test_below_healthy_min_n": 1249,
+  "band_n_and_also_below_healthy_min": [
+   873,
+   860
+  ],
+  "roc_auc_minus_q": 0.988,
+  "roc_auc_dp_over_q": 0.991,
+  "q_sweep_max_f1_at": [
+   0.947,
+   6.5
+  ],
+  "step_8340_q_change_pct": -3.34,
+  "step_8340_dp_over_q_change_pct": 15.3,
+  "n_below_6_m3h_and_pct": [
+   1808,
+   15.7
+  ],
+  "n_above_15_m3h": 46,
+  "median_dp_over_q_1_7140_and_10321_11519": [
+   1.411,
+   11.004
+  ]
+ },
+ "corrected": {
+  "Train-A_min_median": [
+   11.13,
+   11.573
+  ],
+  "Val-A_min_median": [
+   11.524,
+   11.666
+  ],
+  "Test_min_median": [
+   10.713,
+   11.276
+  ],
+  "Val-B_min_median": [
+   10.566,
+   10.873
+  ],
+  "Train-B_min_median": [
+   10.383,
+   10.882
+  ],
+  "median_drop_TrainA_to_TrainB_pct": 6.0,
+  "healthy_train_val_min": 11.13,
+  "test_below_healthy_min_pct_pre_step_mid_post": [
+   0.0,
+   4.1,
+   44.5
+  ],
+  "test_below_healthy_min_n": 318,
+  "band_n_and_also_below_healthy_min": [
+   873,
+   217
+  ],
+  "roc_auc_minus_q": 0.8,
+  "roc_auc_dp_over_q": 0.991,
+  "q_sweep_max_f1_at": [
+   0.688,
+   11.5
+  ],
+  "step_8340_q_change_pct": -2.81,
+  "step_8340_dp_over_q_change_pct": 14.7,
+  "n_below_6_m3h_and_pct": [
+   0,
+   0.0
+  ],
+  "n_above_15_m3h": 199,
+  "median_dp_over_q_1_7140_and_10321_11519": [
+   0.852,
+   5.445
+  ]
+ },
+ "xgb_flag_agreement_with_q_threshold_pct_at": {
+  "logged": [
+   98.4,
+   6.65
+  ],
+  "corrected": [
+   98.4,
+   11.48
+  ]
+ },
+ "sensitivity": {
+  "p_atm_90": {
+   "median_drop_TrainA_to_TrainB_pct": 4.6,
+   "test_below_healthy_min_pct_pre_step_mid_post": [
+    0.0,
+    3.0,
+    24.6
+   ],
+   "roc_auc_minus_q": 0.781,
+   "n_below_6_m3h_and_pct": [
+    0,
+    0.0
+   ]
+  },
+  "extra_loss_5kPa": {
+   "median_drop_TrainA_to_TrainB_pct": 6.6,
+   "test_below_healthy_min_pct_pre_step_mid_post": [
+    0.0,
+    8.1,
+    55.9
+   ],
+   "roc_auc_minus_q": 0.812,
+   "n_below_6_m3h_and_pct": [
+    0,
+    0.0
+   ]
+  }
+ }
+}
