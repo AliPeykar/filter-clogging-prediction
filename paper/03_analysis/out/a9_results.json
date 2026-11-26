@@ -1,0 +1,289 @@
+{
+ "data": "Comprehensive_Filter_Analysis.xlsx",
+ "seed": 42,
+ "python": "3.12.14",
+ "restart_blocks_1based": [
+  [
+   1,
+   9600
+  ],
+  [
+   9601,
+   10260
+  ],
+  [
+   10261,
+   11519
+  ]
+ ],
+ "V0_main": {
+  "n_features": 40,
+  "n_train_val_test": [
+   8279,
+   1200,
+   1740
+  ],
+  "rows_with_nan_train_val_test": [
+   276,
+   0,
+   0
+  ],
+  "xgb": {
+   "roc_auc": 0.9756,
+   "pr_auc": 0.9444,
+   "precision": 0.553,
+   "recall": 0.9985,
+   "f1": 0.7118,
+   "confusion_matrix": [
+    [
+     551,
+     531
+    ],
+    [
+     1,
+     657
+    ]
+   ],
+   "first_flag_minus_onset": -602,
+   "false_positives": 531,
+   "false_positives_before_step": 0,
+   "n_trees": 97
+  },
+  "rf": {
+   "roc_auc": 0.9712,
+   "pr_auc": 0.9656,
+   "precision": 1.0,
+   "recall": 0.8951,
+   "f1": 0.9447,
+   "confusion_matrix": [
+    [
+     1082,
+     0
+    ],
+    [
+     69,
+     589
+    ]
+   ],
+   "first_flag_minus_onset": 21,
+   "false_positives": 0,
+   "false_positives_before_step": 0
+  }
+ },
+ "V1_norm_trainA": {
+  "n_features": 40,
+  "n_train_val_test": [
+   8279,
+   1200,
+   1740
+  ],
+  "rows_with_nan_train_val_test": [
+   276,
+   0,
+   0
+  ],
+  "xgb": {
+   "roc_auc": 0.9608,
+   "pr_auc": 0.8794,
+   "precision": 0.5394,
+   "recall": 0.9985,
+   "f1": 0.7004,
+   "confusion_matrix": [
+    [
+     521,
+     561
+    ],
+    [
+     1,
+     657
+    ]
+   ],
+   "first_flag_minus_onset": -602,
+   "false_positives": 561,
+   "false_positives_before_step": 0,
+   "n_trees": 240
+  },
+  "rf": {
+   "roc_auc": 0.982,
+   "pr_auc": 0.9797,
+   "precision": 1.0,
+   "recall": 0.8343,
+   "f1": 0.9097,
+   "confusion_matrix": [
+    [
+     1082,
+     0
+    ],
+    [
+     109,
+     549
+    ]
+   ],
+   "first_flag_minus_onset": 34,
+   "false_positives": 0,
+   "false_positives_before_step": 0
+  }
+ },
+ "V2_restart_after_test": {
+  "n_features": 40,
+  "n_train_val_test": [
+   8279,
+   1200,
+   1740
+  ],
+  "rows_with_nan_train_val_test": [
+   276,
+   0,
+   0
+  ],
+  "xgb": {
+   "roc_auc": 0.9824,
+   "pr_auc": 0.9649,
+   "precision": 0.5412,
+   "recall": 0.9985,
+   "f1": 0.7019,
+   "confusion_matrix": [
+    [
+     525,
+     557
+    ],
+    [
+     1,
+     657
+    ]
+   ],
+   "first_flag_minus_onset": -600,
+   "false_positives": 557,
+   "false_positives_before_step": 0,
+   "n_trees": 173
+  },
+  "rf": {
+   "roc_auc": 0.9908,
+   "pr_auc": 0.9912,
+   "precision": 1.0,
+   "recall": 0.9681,
+   "f1": 0.9838,
+   "confusion_matrix": [
+    [
+     1082,
+     0
+    ],
+    [
+     21,
+     637
+    ]
+   ],
+   "first_flag_minus_onset": 21,
+   "false_positives": 0,
+   "false_positives_before_step": 0
+  }
+ },
+ "V3_no_cusum": {
+  "n_features": 39,
+  "n_train_val_test": [
+   8279,
+   1200,
+   1740
+  ],
+  "rows_with_nan_train_val_test": [
+   276,
+   0,
+   0
+  ],
+  "xgb": {
+   "roc_auc": 0.9706,
+   "pr_auc": 0.9246,
+   "precision": 0.5582,
+   "recall": 0.9985,
+   "f1": 0.7161,
+   "confusion_matrix": [
+    [
+     562,
+     520
+    ],
+    [
+     1,
+     657
+    ]
+   ],
+   "first_flag_minus_onset": -596,
+   "false_positives": 520,
+   "false_positives_before_step": 0,
+   "n_trees": 165
+  },
+  "rf": {
+   "roc_auc": 0.971,
+   "pr_auc": 0.9656,
+   "precision": 1.0,
+   "recall": 0.8967,
+   "f1": 0.9455,
+   "confusion_matrix": [
+    [
+     1082,
+     0
+    ],
+    [
+     68,
+     590
+    ]
+   ],
+   "first_flag_minus_onset": 21,
+   "false_positives": 0,
+   "false_positives_before_step": 0
+  }
+ },
+ "V4_all": {
+  "n_features": 39,
+  "n_train_val_test": [
+   8279,
+   1200,
+   1740
+  ],
+  "rows_with_nan_train_val_test": [
+   276,
+   0,
+   0
+  ],
+  "xgb": {
+   "roc_auc": 0.9693,
+   "pr_auc": 0.9271,
+   "precision": 0.5503,
+   "recall": 0.9985,
+   "f1": 0.7095,
+   "confusion_matrix": [
+    [
+     545,
+     537
+    ],
+    [
+     1,
+     657
+    ]
+   ],
+   "first_flag_minus_onset": -600,
+   "false_positives": 537,
+   "false_positives_before_step": 0,
+   "n_trees": 188
+  },
+  "rf": {
+   "roc_auc": 0.971,
+   "pr_auc": 0.9656,
+   "precision": 1.0,
+   "recall": 0.8967,
+   "f1": 0.9455,
+   "confusion_matrix": [
+    [
+     1082,
+     0
+    ],
+    [
+     68,
+     590
+    ]
+   ],
+   "first_flag_minus_onset": 21,
+   "false_positives": 0,
+   "false_positives_before_step": 0
+  }
+ }
+}

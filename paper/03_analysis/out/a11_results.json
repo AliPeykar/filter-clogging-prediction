@@ -1,0 +1,102 @@
+{
+ "source": "Zenodo 10.5281/zenodo.21987832, Extruder Parameters.zip",
+ "n_runs": 60,
+ "n_rows": 27748,
+ "run_length_s_min_median_max": [
+  18,
+  380,
+  1596
+ ],
+ "features": [
+  "amp",
+  "volt",
+  "power",
+  "amp_m10",
+  "amp_m30",
+  "amp_slope30",
+  "amp_rise",
+  "t_front",
+  "t_mid"
+ ],
+ "per_run_80_20_time_split_single_class_test_runs_H60": 23,
+ "by_H": [
+  {
+   "H_s": 30,
+   "positive_share": 0.064,
+   "random_split": {
+    "rf_roc_auc": 0.977,
+    "rf_f1": 0.539,
+    "test_rows_from_training_runs_pct": 100.0
+   },
+   "run_level_cv": {
+    "rf_roc_auc": 0.787,
+    "rf_f1": 0.165,
+    "rf_roc_auc_within_run_median": 0.842,
+    "held_out_amp_outside_training_range_pct": 0.04
+   },
+   "baselines_pooled_roc_auc": {
+    "amp": 0.821,
+    "amp_m30": 0.802,
+    "amp_rise": 0.805,
+    "power": 0.838
+   },
+   "baselines_within_run_median_roc_auc": {
+    "amp": 0.934,
+    "amp_m30": 0.977,
+    "amp_rise": 0.934
+   }
+  },
+  {
+   "H_s": 60,
+   "positive_share": 0.128,
+   "random_split": {
+    "rf_roc_auc": 0.969,
+    "rf_f1": 0.639,
+    "test_rows_from_training_runs_pct": 100.0
+   },
+   "run_level_cv": {
+    "rf_roc_auc": 0.792,
+    "rf_f1": 0.337,
+    "rf_roc_auc_within_run_median": 0.888,
+    "held_out_amp_outside_training_range_pct": 0.04
+   },
+   "baselines_pooled_roc_auc": {
+    "amp": 0.803,
+    "amp_m30": 0.791,
+    "amp_rise": 0.789,
+    "power": 0.821
+   },
+   "baselines_within_run_median_roc_auc": {
+    "amp": 0.933,
+    "amp_m30": 0.992,
+    "amp_rise": 0.933
+   }
+  },
+  {
+   "H_s": 120,
+   "positive_share": 0.251,
+   "random_split": {
+    "rf_roc_auc": 0.963,
+    "rf_f1": 0.792,
+    "test_rows_from_training_runs_pct": 100.0
+   },
+   "run_level_cv": {
+    "rf_roc_auc": 0.767,
+    "rf_f1": 0.465,
+    "rf_roc_auc_within_run_median": 0.876,
+    "held_out_amp_outside_training_range_pct": 0.04
+   },
+   "baselines_pooled_roc_auc": {
+    "amp": 0.772,
+    "amp_m30": 0.762,
+    "amp_rise": 0.76,
+    "power": 0.791
+   },
+   "baselines_within_run_median_roc_auc": {
+    "amp": 0.948,
+    "amp_m30": 0.982,
+    "amp_rise": 0.95
+   }
+  }
+ ]
+}

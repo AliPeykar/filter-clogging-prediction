@@ -1,0 +1,433 @@
+{
+ "q_levels_6p45_6p85_before_9681": [
+  6.487,
+  6.526,
+  6.565,
+  6.603,
+  6.642,
+  6.68,
+  6.717,
+  6.755,
+  6.792,
+  6.822,
+  6.83
+ ],
+ "q_level_spacing_near_6p6": [
+  0.039,
+  0.039,
+  0.038,
+  0.039,
+  0.038,
+  0.037,
+  0.038,
+  0.037
+ ],
+ "q_squared_step_per_count_median": 0.507,
+ "bootstrap_valid_resamples_of_1000": {
+  "50": 1000,
+  "100": 1000,
+  "200": 989,
+  "400": 947
+ },
+ "rf_false_negative_runs": [
+  [
+   8943,
+   8963
+  ],
+  [
+   9553,
+   9600
+  ]
+ ],
+ "rf_false_negatives_dp_range": [
+  20.319,
+  28.791
+ ],
+ "onset_at_dp_level_sweep": [
+  {
+   "T": 18.25,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 18.5,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 18.75,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 19.0,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 19.25,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 19.5,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 19.75,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 20.0,
+   "onset": 8340,
+   "xgb": 0.984,
+   "rf": 0.637,
+   "midgap": 0.678,
+   "best": "xgb"
+  },
+  {
+   "T": 20.25,
+   "onset": 8345,
+   "xgb": 0.984,
+   "rf": 0.638,
+   "midgap": 0.68,
+   "best": "xgb"
+  },
+  {
+   "T": 20.5,
+   "onset": 8378,
+   "xgb": 0.97,
+   "rf": 0.65,
+   "midgap": 0.692,
+   "best": "xgb"
+  },
+  {
+   "T": 20.75,
+   "onset": 8432,
+   "xgb": 0.947,
+   "rf": 0.67,
+   "midgap": 0.713,
+   "best": "xgb"
+  },
+  {
+   "T": 21.0,
+   "onset": 8642,
+   "xgb": 0.858,
+   "rf": 0.761,
+   "midgap": 0.806,
+   "best": "xgb"
+  },
+  {
+   "T": 21.25,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 21.5,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 21.75,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 22.0,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 22.25,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 22.5,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 22.75,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 23.0,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 23.25,
+   "onset": 8954,
+   "xgb": 0.692,
+   "rf": 0.953,
+   "midgap": 1.0,
+   "best": "midgap"
+  },
+  {
+   "T": 23.5,
+   "onset": 8960,
+   "xgb": 0.688,
+   "rf": 0.958,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 23.75,
+   "onset": 8960,
+   "xgb": 0.688,
+   "rf": 0.958,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 24.0,
+   "onset": 8960,
+   "xgb": 0.688,
+   "rf": 0.958,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 24.25,
+   "onset": 8960,
+   "xgb": 0.688,
+   "rf": 0.958,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 24.5,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 24.75,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 25.0,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 25.25,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 25.5,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 25.75,
+   "onset": 8961,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.995,
+   "best": "midgap"
+  },
+  {
+   "T": 26.0,
+   "onset": 8962,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.994,
+   "best": "midgap"
+  },
+  {
+   "T": 26.25,
+   "onset": 8962,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.994,
+   "best": "midgap"
+  },
+  {
+   "T": 26.5,
+   "onset": 8962,
+   "xgb": 0.687,
+   "rf": 0.959,
+   "midgap": 0.994,
+   "best": "midgap"
+  },
+  {
+   "T": 26.75,
+   "onset": 8971,
+   "xgb": 0.68,
+   "rf": 0.955,
+   "midgap": 0.987,
+   "best": "midgap"
+  },
+  {
+   "T": 27.0,
+   "onset": 9011,
+   "xgb": 0.651,
+   "rf": 0.919,
+   "midgap": 0.954,
+   "best": "midgap"
+  },
+  {
+   "T": 27.25,
+   "onset": 9031,
+   "xgb": 0.636,
+   "rf": 0.901,
+   "midgap": 0.937,
+   "best": "midgap"
+  },
+  {
+   "T": 27.5,
+   "onset": 9069,
+   "xgb": 0.607,
+   "rf": 0.864,
+   "midgap": 0.902,
+   "best": "midgap"
+  },
+  {
+   "T": 27.75,
+   "onset": 9069,
+   "xgb": 0.607,
+   "rf": 0.864,
+   "midgap": 0.902,
+   "best": "midgap"
+  },
+  {
+   "T": 28.0,
+   "onset": 9088,
+   "xgb": 0.591,
+   "rf": 0.844,
+   "midgap": 0.884,
+   "best": "midgap"
+  },
+  {
+   "T": 28.25,
+   "onset": 9090,
+   "xgb": 0.59,
+   "rf": 0.842,
+   "midgap": 0.883,
+   "best": "midgap"
+  },
+  {
+   "T": 28.5,
+   "onset": 9097,
+   "xgb": 0.584,
+   "rf": 0.834,
+   "midgap": 0.876,
+   "best": "midgap"
+  },
+  {
+   "T": 28.75,
+   "onset": 9099,
+   "xgb": 0.582,
+   "rf": 0.832,
+   "midgap": 0.874,
+   "best": "midgap"
+  },
+  {
+   "T": 29.0,
+   "onset": 9101,
+   "xgb": 0.581,
+   "rf": 0.83,
+   "midgap": 0.872,
+   "best": "midgap"
+  }
+ ],
+ "sweep_f1_range_xgb": [
+  0.581,
+  0.984
+ ],
+ "sweep_f1_range_rf": [
+  0.637,
+  0.959
+ ],
+ "sweep_f1_range_midgap": [
+  0.678,
+  1.0
+ ],
+ "sweep_best_counts": {
+  "xgb": 12,
+  "rf": 0,
+  "midgap": 32
+ },
+ "sweep_best_by_T": [
+  {
+   "best": "xgb",
+   "T_from": 18.25,
+   "T_to": 21.0,
+   "onset_from": 8340,
+   "onset_to": 8642
+  },
+  {
+   "best": "midgap",
+   "T_from": 21.25,
+   "T_to": 29.0,
+   "onset_from": 8954,
+   "onset_to": 9101
+  }
+ ]
+}

@@ -25,7 +25,7 @@ figures is in this repository.
 | `docs/` | Modification log, verification checklist and physics notes for the corrected pipeline |
 | `legacy/` | The earlier pipeline (reported scores of 1.000), archived unmodified with its reports and plots; trained model files are not included |
 | `paper/01_reproduction/runs/` | Archived outputs of the four configurations as reported in the article |
-| `paper/03_analysis/` | Analysis scripts A1–A8, sensitivity configurations and runs, figure script and their outputs (`out/`) |
+| `paper/03_analysis/` | Analysis scripts A1–A12, sensitivity configurations and runs, figure script and their outputs (`out/`) |
 
 ## Data notes
 
@@ -61,6 +61,12 @@ The analyses run from the repository root, for example
 redraws the article figures from `paper/03_analysis/out/` and the archived
 runs. Re-runs on other machines can differ in the third decimal; the article
 reports the archived results.
+
+Analysis A11 uses a second, public data set that is not redistributed here:
+`Extruder Parameters.zip` from Zenodo, https://doi.org/10.5281/zenodo.21987832
+(Ferreira et al., Data in Brief 69 (2026) 113254; CC BY 4.0). Extract it to
+`paper/08_extrusion/extracted/` before running
+`python paper/03_analysis/a11_extrusion_second_dataset.py`.
 
 ## Licence
 
